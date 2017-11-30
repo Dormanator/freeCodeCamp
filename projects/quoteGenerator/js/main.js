@@ -1,88 +1,23 @@
-genBlur();
-api();
-
-
-// function to power random quote button
-document.getElementById('btn_quote').addEventListener('click', (x) => {
-    x.preventDefault;
-    let num = genRan();
-    genBlur();
-    api(num);
+// listen for clicks on nav item to allow info on quote generator to be toggled on and off
+document.getElementById('nav_quote').addEventListener('click', x => {
+    toggleInfo( document.getElementById('qt_gen_info') );
+    toggleCurrent( document.getElementById('nav_quote') );
 });
 
-// gnerate a 6 digit random number
-function genRan(){
-    let num = Math.floor(Math.random() * 1000000);
-    return num.toString();
+// function to allow info on nav items to be toggled on and off
+function toggleInfo (object) {
+    
+        if (object.style.display === 'none') {
+            object.style.display = 'block';
+        } else {
+            object.style.display = 'none';
+        }
 }
 
-// function called by teh API
-function grab(response){
-    document.getElementById('quote').innerHTML = quoteClean(response);
-    document.getElementById('author').innerHTML = authorCheck(response);
-    // update tweet button with new twitter link on api load
-    document.getElementById('tweet_href').setAttribute('href', tweetPrepare(response) );
-    // update source button with new link forismatic link on api load
-    document.getElementById('src_href').setAttribute('href', response.quoteLink );
-}
-
-// injecting the ranom number into the jsonp link to obtain random quote
-function api(randNum){
-    // setting up jsonp to get random quotes
-    const API = document.createElement('script');
-    API.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=' + randNum + '&format=jsonp&lang=en&jsonp=grab';
-    // appending jsonp script to head
-    document.getElementsByTagName('head')[0].appendChild(API);
-    // un blur random quote once loaded
-    document.getElementsByTagName('head')[0].removeChild(API);
-}
-
-// prepare quote for tweet
-function tweetPrepare(input){
-    let quote = quoteClean(input);
-    let author = authorCheck(input);
-    let tweet = '';
-    // if > 140 char trim to 135 - author and add '..."-'
-    if ((quote.length + author.length + 1) > 139) {
-        tweet = quote.slice(0,(135 - author.length)) + '..."-' + author; 
+function toggleCurrent (object) {
+    if ( object.classList.contains('current-nav') ) {
+        object.classList.remove('current-nav');
     } else {
-        tweet = quote + '-' + author;
+        object.classList.add('current-nav');
     }
-    // replace spaces with '%'
-    // concat to end of link "https://twitter.com/intent/tweet?text=Hello%20world"
-    tweet = "https://twitter.com/intent/tweet?text=" + tweet.replace(/\s/g, '%20');
-    return tweet;
-}
-
-// blur the quote and author when adding a new quote
-function genBlur(){
-    
-    let quote = document.getElementById('quote');
-    let author = document.getElementById('author');
-
-    if (quote.classList.contains('blur') && author.classList.contains('blur')){
-        quote.classList.remove('blur');
-        author.classList.remove('blur');
-    }
-
-    void quote.offsetWidth;
-    void author.offsetWidth;
-    
-    quote.classList.add('blur');
-    author.classList.add('blur');
-
-    if (quote.classList.contains('blur_land') && author.classList.contains('blur_land')){
-        quote.classList.remove('blur_land');
-        author.classList.remove('blur_land');
-    }
-}
-
-// take the api response object and returns the quote ready to by removing extra spaces and adding quotation marks
-function quoteClean (input) {
-    return '"' + input.quoteText.replace(/\s+$/, '') + '"';
-}
-
-// the the api object and check if an author is given, sets up alternate text in case missing
-function authorCheck (input) {
-    return input.quoteAuthor == '' ? 'Unknown' : input.quoteAuthor;
 }

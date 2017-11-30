@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ryan Dorman's freeCodeCamp Projects</title>
+    <title>Ryan Dorman's Quote Generator</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Caveat" rel="stylesheet">
     <script src="https://use.fontawesome.com/7ab10f6524.js"></script>
@@ -21,8 +21,16 @@
         <h4><a href="https://www.freecodecamp.org/dormanator" class="fcc-font" target="_blank">freeCodeCamp</a> Projects</h4>
         <ul>
             <li><i class="fa fa-free-code-camp fa-5x" aria-hidden="true"></i></li>
-            <li class="nav-item current-nav"><a href="#">Quote Generator</a></li>
-            <div>Built with JavaScript <br>JSONP and the <br><a href="http://forismatic.com/en/">Forismatic</a> API.</div>
+            <li class="nav-item current-nav" id="nav_quote">Quote Generator</li>
+            <div id="qt_gen_info">
+                Built with JavaScript 
+                <br>using JSONP and the 
+                <br><a href="http://forismatic.com/en/">Forismatic API.</a>
+                <br>
+                <a href="https://github.com/Dormanator/freeCodeCamp/tree/master/projects/quoteGenerator" target="_blank">
+                    <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                </a>
+            </div>
             <!--
             <li class="nav-item"><a href="#">Local Weather</a></li>
             <li class="nav-item"><a href="#">Wikipedia Viewer</a></li>
@@ -79,6 +87,9 @@
     crossorigin="anonymous"></script>
     -->
     <!--Quote Gen JS-->
+    <script 
+    src="js/quoteGen.js" 
+    type="text/javascript"></script>
     <script 
     src="js/main.js" 
     type="text/javascript"></script>

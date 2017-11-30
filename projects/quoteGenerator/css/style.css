@@ -31,16 +31,19 @@
 
 .nav h4 {
     margin: 0;
-    margin-bottom: 20px;
     margin-left: 15px;
 }
 
-.name-font {
-    color: #363636;
+.name-font,
+.nav ul li a,
+.nav ul div a {
+    color: #535353;
 }
 
-.name-font:hover {
-    color: #525252;
+.name-font:hover,
+.nav ul li a:hover,
+.nav ul div a:hover {
+    color: #363636;
 }
 
 .fcc-font {
@@ -53,7 +56,7 @@
 }
 
 .fa-free-code-camp {
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
 
 .current-nav {
@@ -65,13 +68,18 @@
     margin-bottom: 5px;
 }
 
-.nav ul div {
-    margin-bottom: 10px;
+.nav ul .nav-item {
+    cursor: pointer
 }
 
-.nav ul li a{
-    color: #363636;
-    
+.nav ul div {
+    margin-bottom: 10px;
+    margin-left: -5px;
+}
+
+.nav ul div i {
+    margin-top: 10px;
+    margin-left: 50px;
 }
 
 /************************************************************
@@ -262,6 +270,7 @@ a {
 .sml_btn {
     height: 35px;
     width: 35px;
+    margin: 5px;
 
     color: #fff;
 
@@ -270,13 +279,12 @@ a {
     -webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
 
-    margin: 5px;
-
     display: -webkit-flex;
 	-webkit-flex-wrap: wrap;
 	display: flex; flex-wrap: wrap;
 	justify-content: center;
     align-items: center;
+
 }
 
 button {
@@ -359,7 +367,7 @@ button:active {
 
 @media only screen and (max-device-width: 640px) {
     .quote_container {
-        height: 65vh;
+        height: 60vh;
         overflow: scroll;
     }
 
