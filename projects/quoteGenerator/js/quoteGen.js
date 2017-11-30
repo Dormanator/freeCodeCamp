@@ -1,4 +1,4 @@
-genBlur();
+genBlur(document.getElementById('quote'), document.getElementById('author'));
 api();
 
 
@@ -6,11 +6,11 @@ api();
 document.getElementById('btn_quote').addEventListener('click', (x) => {
     x.preventDefault;
     let num = genRan();
-    genBlur();
+    genBlur(document.getElementById('quote'), document.getElementById('author'));
     api(num);
 });
 
-// gnerate a 6 digit random number
+// generate a 6 digit random number
 function genRan(){
     let num = Math.floor(Math.random() * 1000000);
     return num.toString();
@@ -55,16 +55,14 @@ function tweetPrepare(input){
 }
 
 // blur the quote and author when adding a new quote
-function genBlur(){
-    
-    let quote = document.getElementById('quote');
-    let author = document.getElementById('author');
+function genBlur(quote, author){
 
     if (quote.classList.contains('blur') && author.classList.contains('blur')){
         quote.classList.remove('blur');
         author.classList.remove('blur');
     }
 
+    // reseting animation state to allow consecutive blurs
     void quote.offsetWidth;
     void author.offsetWidth;
     
