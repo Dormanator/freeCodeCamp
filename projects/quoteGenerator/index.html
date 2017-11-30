@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ryan Dorman's freeCodeCamp Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Caveat" rel="stylesheet">
+    <script src="https://use.fontawesome.com/7ab10f6524.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<!--
+#
+# NAVIGATON MODULE CONTENT
+#
+-->
+    <section class="nav">
+        <h2><a href="http://ryandorman.tech/" class="name-font" target="_blank">Ryan Dorman's</a></h2>
+        <h4><a href="https://www.freecodecamp.org/dormanator" class="fcc-font" target="_blank">freeCodeCamp</a> Projects</h4>
+        <ul>
+            <li><i class="fa fa-free-code-camp fa-5x" aria-hidden="true"></i></li>
+            <li class="nav-item current-nav"><a href="#">Quote Generator</a></li>
+            <div>Built with JavaScript <br>JSONP and the <br><a href="http://forismatic.com/en/">Forismatic</a> API.</div>
+            <!--
+            <li class="nav-item"><a href="#">Local Weather</a></li>
+            <li class="nav-item"><a href="#">Wikipedia Viewer</a></li>
+            <li class="nav-item"><a href="#">Twitch API</a></li>
+            -->
+        </ul>
+    </section>
+<!--
+#
+# NAVIGATON TOGGLE CONTENT
+#
+-->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle"><i class="fa fa-info" aria-hidden="true"></i></label>
+
+<!--
+#
+# RANDOM QUOTE GENERATOR
+#
+-->
+    <section id="rand_quote_gen" class="site-wrap">
+        <!--QUOTE SECTION-->
+        <div class="row quote_container">
+            <div class="col flex-bottom">
+                <!--QUOTE TEXT-->
+                <p id="quote" class="blur_land quote">It is possible to commit no mistakes and still lose. That is not a weakness; that is life.</p>
+                <!--AUTHOR TEXT-->
+                <p id="author" class="blur_land author">Jean-Luc Picard</p>
+            </div>
+        </div>
+        <!--BUTTON SECTION-->
+        <div class="row" id="btn_container">
+            <div class="col btn_sec">
+                <!--RANDOM QUOTE BUTTON-->
+                <button type="button" id="btn_quote" class="main_btn">New Quote</button>
+            </div>
+            <div class="col sml_btn_sec">
+                <!--TWEET QUOTE BUTTON-->
+                <a href="#" target="_blank" id="tweet_href">
+                    <div id="btn_tweet" class="btn_tweet sml_btn"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></div>
+                </a>
+                <!--QUOTE SOURCE BUTTON-->
+                <a href="#" target="_blank" id="src_href">
+                    <div id="btn_src" class="btn_src sml_btn"><i class="fa fa-external-link fa-lg" aria-hidden="true"></i></div>
+                </a>
+            </div>  
+        </div>
+    </section>
+
+    <!--JQUERY
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    -->
+    <!--Quote Gen JS-->
+    <script 
+    src="js/main.js" 
+    type="text/javascript"></script>
+
+</body>
+</html>

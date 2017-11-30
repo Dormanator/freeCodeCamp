@@ -1,0 +1,381 @@
+/************************************************************
+*
+*           NAVIGATION MODUAL LAYOUT
+*
+*************************************************************/
+
+.nav {
+    background-color: #ececec;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    color: #363636;
+    font-family: 'Barlow Semi Condensed', sans-serif;  
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav h2 {
+    margin: 0;
+    margin-top: 15px;
+    margin-left: 15px;
+    
+}
+
+.nav h4 {
+    margin: 0;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.name-font {
+    color: #363636;
+}
+
+.name-font:hover {
+    color: #525252;
+}
+
+.fcc-font {
+    font-family: Courier New, Courier, monospace;
+    color: darkgreen;
+}
+
+.fcc-font:hover {
+    color: green;
+}
+
+.fa-free-code-camp {
+    margin-bottom: 15px;
+}
+
+.current-nav {
+    text-decoration: underline;
+}
+
+.nav ul li {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.nav ul div {
+    margin-bottom: 10px;
+}
+
+.nav ul li a{
+    color: #363636;
+    
+}
+
+/************************************************************
+*
+*           NAVIGATION TOGGLE LAYOUT & STYLES
+*
+*************************************************************/
+
+.nav-toggle {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-toggle"] {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    color: #fff;
+}
+
+label[for="nav-toggle"]:hover {
+    color: #d4d4d4;
+}
+
+/************************************************************
+*
+*           NAVIGATION TOGGLE CONTROL
+*
+*************************************************************/
+
+.nav-toggle:checked + label {
+    left: 215px;
+}
+
+.nav-toggle:checked ~ .site-wrap {
+    left: 200px;
+}
+
+.nav-toggle + label, .site-wrap {
+    transition: left 0.2s;
+}
+
+/************************************************************
+*
+*           GENERAL PAGE STYLES
+*
+*************************************************************/
+
+* {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;   
+    background-color: #363636;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-wrap {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+    top: 0;
+    bottom: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #363636;
+}
+
+/************************************************************
+*
+*           MAIN LAYOUT COMPONENTS
+*
+*************************************************************/
+
+.row{
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+	align-items: center;
+	width: 90%;
+	padding: 15px;
+	margin: auto;
+	justify-content: center;
+}
+
+.flex-bottom {
+	display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+	justify-content: center;
+    align-self: flex-end;
+}
+
+.col {
+    width: 100%;
+    text-align: center;
+}
+
+/************************************************************
+*
+*          QUOTE AND AUTHOR LAYOUT
+*
+*************************************************************/
+
+.quote_container {    
+    height: 55vh;
+    vertical-align: text-bottom;
+    color: #fff;
+}
+
+/************************************************************
+*
+*          QUOTE AND AUTHOR STYLES
+*
+*************************************************************/
+
+.quote {
+    width: 100%;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 3.5em;
+    margin: 5px;
+}
+
+.author {
+    font-family: 'Caveat', cursive;
+    font-style: italic;
+    font-size: 2em;
+    margin: 5px;
+}
+
+/************************************************************
+*
+*           BUTTON lAYOUT
+*
+*************************************************************/
+
+.btn_sec {
+    width: 100%;
+    height: 50px;
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.sml_btn_sec {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+	justify-content: flex-end;
+    align-items: center;
+}
+
+/************************************************************
+*
+*           BUTTON STYLES
+*
+*************************************************************/
+
+.main_btn {
+    height: 60px;
+    width: 140px;
+
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 1em;
+}
+
+.sml_btn {
+    height: 35px;
+    width: 35px;
+
+    color: #fff;
+
+    border: 1px solid #fff;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+
+    margin: 5px;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+	justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #363636;
+    color: #fff;
+
+    cursor: pointer;
+
+    border: 1px solid #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+button:hover {
+    background-color: #3a3a3a;
+    color: #d4d4d4;
+    border: 2px solid #fff;
+    font-weight: 700;
+}
+
+button:active {
+    border: 3px solid #fff;
+}
+
+.btn_tweet:hover  {
+    background-color: #00aced;
+    color: #d4d4d4;
+}
+
+.btn_src:hover {
+    background-color: #fff;
+    color: #363636;
+}
+
+/************************************************************
+*
+*           BLUR ANIMATION
+*
+*************************************************************/
+
+.blur_land {
+    filter: blur(10px);
+}
+
+.blur {
+    -webkit-animation-name: blur;
+    -webkit-animation-duration: 1s;
+    animation-name: blur;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes blur {
+    0%   {filter: blur(2px);}
+    10%  {filter: blur(5px);}
+    20%  {filter: blur(8px);}
+    40%  {filter: blur(10px);}
+    60%  {filter: blur(5px);}
+    70%  {filter: blur(2px);}
+    80%  {filter: blur(2px);}
+    100% {filter: blur(0px);}
+}
+
+@keyframes blur {
+    0%   {filter: blur(2px);}
+    10%  {filter: blur(5px);}
+    20%  {filter: blur(8px);}
+    40%  {filter: blur(10px);}
+    60%  {filter: blur(5px);}
+    70%  {filter: blur(2px);}
+    80%  {filter: blur(2px);}
+    100% {filter: blur(0px);}
+}
+
+/************************************************************
+*
+*           MEDIA QUERIES
+*
+*************************************************************/
+
+@media only screen and (max-device-width: 640px) {
+    .quote_container {
+        height: 65vh;
+        overflow: scroll;
+    }
+
+    .quote {
+        font-size: 1.6em;
+    }
+    
+    .author {
+        font-size: 1em;
+    }
+
+    .sml_btn_sec {
+        margin-top: 10px;
+    }
+
+    .main_btn {
+        height: 40px;
+    }
+} 
