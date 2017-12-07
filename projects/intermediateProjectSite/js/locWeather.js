@@ -18,7 +18,7 @@ function convert () {
 
     // if celcius convert to farenheit, else vice versa
     if (format === 'C') {
-        value = Math.round((value * 9/5) + 32) + '&deg;F';
+        value = Math.ceil((value * 9/5) + 32) + '&deg;F';
     } else {
         value = Math.round((value - 32) * 5/9) + '&deg;C';
     }
@@ -57,7 +57,7 @@ function convert () {
             $("#image").html('<i class="fa fa-sun-o icon" aria-hidden="true"></i>');
         // clear at night
         } else if (id === 951 || id === 800) {
-            $("#image").html('<i class="fa fa-moon-o" aria-hidden="true">')
+            $("#image").html('<i class="fa fa-moon-o icon" aria-hidden="true">')
         // severe weather
         } else if (id >= 900) {
             $("#image").html('<i class="fa fa-exclamation-triangle icon" aria-hidden="true"></i>');

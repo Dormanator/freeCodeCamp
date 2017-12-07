@@ -30,7 +30,7 @@ function grab(response){
 function api(randNum){
     // setting up jsonp to get random quotes
     const API = document.createElement('script');
-    API.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=' + randNum + '&format=jsonp&lang=en&jsonp=grab';
+    API.src = 'https://api.forismatic.com/api/1.0/?method=getQuote&key=' + randNum + '&format=jsonp&lang=en&jsonp=grab';
     // appending jsonp script to head
     document.getElementsByTagName('head')[0].appendChild(API);
     // un blur random quote once loaded

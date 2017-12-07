@@ -156,11 +156,14 @@ input[type=checkbox]:checked + label i {
 }
 
 body {
-    height: 100vh;   
-    background-color: #363636;
-    overflow-x: hidden;
+    height: 100vh;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+
+    background-color: #363636;
+
+    cursor: default;
 }
 
 a {
@@ -416,8 +419,6 @@ button:active {
 
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 2em;
-
-    cursor: default;
 }
 
 /************************************************************
