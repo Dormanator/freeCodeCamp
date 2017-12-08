@@ -6,8 +6,8 @@ api();
 document.getElementById('btn_quote').addEventListener('click', (x) => {
     x.preventDefault;
     let num = genRan();
-    genBlur(document.getElementById('quote'), document.getElementById('author'));
     api(num);
+    genBlur(document.getElementById('quote'), document.getElementById('author'));
 });
 
 // generate a 6 digit random number

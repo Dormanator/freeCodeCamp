@@ -135,7 +135,6 @@ input[type=checkbox]:checked + label i {
 
 .nav-toggle:checked ~ .content .icon {
     left: 55%;
-    transform: translate(-50%, -50%);
 }
 
 .nav-toggle + label, .content {
@@ -468,6 +467,22 @@ button:active {
 *
 *************************************************************/
 
+@media only screen and (max-device-width: 850px) {
+  /* LOC WEATHER */
+    .nav-toggle:checked ~ .content .icon {
+        left: 60%;
+    }
+
+}
+
+@media only screen and (max-device-width: 750px) {
+    /* LOC WEATHER */
+    .nav-toggle:checked ~ .content .icon {
+        left: 65%;
+    }
+    
+}
+
 @media only screen and (max-device-width: 640px) {
     
     /*  QUOTE GEN */
@@ -494,6 +509,10 @@ button:active {
 
     /* LOC WEATHER */
 
+    .nav-toggle:checked ~ .content .icon {
+        left: 68%;
+    }
+
     .temp {
         font-size: 7em;
     }
@@ -518,5 +537,36 @@ button:active {
 
     .icon {
         font-size: 3em;
+    }
+
+    .nav-toggle:checked ~ .content .icon {
+        left: 70%;
+    }
+}
+
+/* LOC WEATHER */
+
+@media only screen and (max-device-width: 480px) {
+    .nav-toggle:checked ~ .content .icon {
+        left: 75%;
+    }
+}
+
+@media only screen and (max-device-width: 400px) {
+    .nav-toggle:checked ~ .content .icon {
+        left: 80%;
+    }
+}
+
+
+@media only screen and (max-device-width: 340px) {
+    .nav-toggle:checked ~ .content .icon {
+        left: 85%;
+    }
+}
+
+@media only screen and (max-device-width: 300px) {
+    .nav-toggle:checked ~ .content .icon {
+        left: 90%;
     }
 }

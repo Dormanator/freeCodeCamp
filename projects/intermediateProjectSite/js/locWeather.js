@@ -18,7 +18,7 @@ function convert () {
 
     // if celcius convert to farenheit, else vice versa
     if (format === 'C') {
-        value = Math.ceil((value * 9/5) + 32) + '&deg;F';
+        value = Math.round((value * 9/5) + 32) + '&deg;F';
     } else {
         value = Math.round((value - 32) * 5/9) + '&deg;C';
     }
@@ -107,7 +107,6 @@ function handleWeather (response) {
     farenheit: Math.round((response.main.temp * 9/5) + 32) + '&deg;F',
     sunrise: response.sys.sunrise,
     sunset: response.sys.sunset,
-    icon: '<img src=' + response.weather[0].icon + ' >'
     };
 
     $("#image").html('<i class="fa fa-sun-o icon" aria-hidden="true"></i>');
