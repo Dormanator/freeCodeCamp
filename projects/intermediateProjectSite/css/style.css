@@ -237,7 +237,7 @@ a {
 *
 *************************************************************/
 
-.quote_container {    
+.quote-container {    
     height: 55vh;
     vertical-align: text-bottom;
     color: #fff;
@@ -269,7 +269,7 @@ a {
 *
 *************************************************************/
 
-.btn_sec {
+.btn-sec {
     width: 100%;
     height: 50px;
     display: -webkit-flex;
@@ -280,7 +280,7 @@ a {
     position: relative;
 }
 
-.sml_btn_sec {
+.sml-btn-sec {
     display: -webkit-flex;
 	-webkit-flex-wrap: wrap;
 	display: flex; flex-wrap: wrap;
@@ -296,7 +296,7 @@ a {
 *
 *************************************************************/
 
-.main_btn {
+.main-btn {
     height: 60px;
     width: 140px;
 
@@ -306,7 +306,7 @@ a {
     line-height: 1em;
 }
 
-.sml_btn {
+.sml-btn {
     height: 35px;
     width: 35px;
     margin: 5px;
@@ -349,12 +349,12 @@ button:active {
     border: 3px solid #fff;
 }
 
-.btn_tweet:hover  {
+.btn-tweet:hover  {
     background-color: #00aced;
     color: #d4d4d4;
 }
 
-.btn_src:hover {
+.btn-src:hover {
     background-color: #fff;
     color: #363636;
 }
@@ -365,7 +365,7 @@ button:active {
 *
 *************************************************************/
 
-.blur_land {
+.blur-land {
     filter: blur(10px);
 }
 
@@ -486,7 +486,7 @@ button:active {
 @media only screen and (max-device-width: 640px) {
     
     /*  QUOTE GEN */
-    .quote_container {
+    .quote-container {
         height: 60vh;
         overflow: scroll;
     }
@@ -499,11 +499,11 @@ button:active {
         font-size: 1em;
     }
 
-    .sml_btn_sec {
+    .sml-btn-sec {
         margin-top: 10px;
     }
 
-    .main_btn {
+    .main-btn {
         height: 40px;
     }
 

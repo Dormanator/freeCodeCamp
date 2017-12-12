@@ -14,13 +14,13 @@ function convert () {
 
     // grab the format of teh temperature (C or F) and its value
     let format = $("#temp").html().replace(/[^CF]/g,'');
-    let value = $("#temp").html().replace(/\D/g,'');
+    let value = $("#temp").html();
 
     // if celcius convert to farenheit, else vice versa
     if (format === 'C') {
-        value = Math.round((value * 9/5) + 32) + '&deg;F';
+        value = weather.farenheit;
     } else {
-        value = Math.round((value - 32) * 5/9) + '&deg;C';
+        value = weather.celcius;
     }
 
     // append converted temp to DOM
@@ -99,11 +99,12 @@ function getWeather (lat, long) {
 
 function handleWeather (response) {
     
-    // weather object to store values of interest from API
-    let weather = {
+    // weather object to store values of interest from API, making global so it can be passed into click event functions
+    weather = {
     city: response.name,
     id: response.weather[0].id,
     desc: response.weather[0].description,
+    celcius: Math.round(response.main.temp) + '&deg;C',
     farenheit: Math.round((response.main.temp * 9/5) + 32) + '&deg;F',
     sunrise: response.sys.sunrise,
     sunset: response.sys.sunset,

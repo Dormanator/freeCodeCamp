@@ -69,9 +69,9 @@ function genBlur(quote, author){
     quote.classList.add('blur');
     author.classList.add('blur');
 
-    if (quote.classList.contains('blur_land') && author.classList.contains('blur_land')){
-        quote.classList.remove('blur_land');
-        author.classList.remove('blur_land');
+    if (quote.classList.contains('blur-land') && author.classList.contains('blur-land')){
+        quote.classList.remove('blur-land');
+        author.classList.remove('blur-land');
     }
 }
 
