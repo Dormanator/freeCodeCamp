@@ -1,0 +1,1 @@
+// fix random wiki rotation vertical movement on chrome and IOS safari

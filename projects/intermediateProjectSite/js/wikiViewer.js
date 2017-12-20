@@ -114,31 +114,12 @@ document.getElementById('close_results').addEventListener( 'click', click => {
     allowClear(container);
 });
 
-/* rotating random wiki container contents
-rotateRandom();
-
-function rotateRandom () {
-    
-    let increment = 0;
-    const options = $('#rotate-options');
-
-    setInterval(() => {
-        increment++;
-        options.css({
-            'transform': 'rotateX(' + (increment * -60) + 'deg)',
-            '-webkit-transform': 'rotateX(' + (increment * -60) + 'deg)'
-        })
-        options.attr('data-state', (increment % 6) + 1);
-    }, 1500)
-}
-*/
-
 // function to rotate random wiki section
 function rotateRandom () {
     // create var to iterate through animation
     let i = 0;
     // get container random wiki option list
-    const options = document.getElementById('rotate-options');
+    const options = document.getElementById('rotate_options');
 
     // set timed interval to continuosly rotate the list
     setInterval(() => {

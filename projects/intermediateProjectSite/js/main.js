@@ -101,3 +101,34 @@ function setCurrent ( navLink ) {
         navLink.classList.add('current-nav');  
     }
 }
+
+
+// function to change aspects of site based on menu status
+document.getElementById('nav_toggle').addEventListener( 'click', click => {
+    
+    // get value of checkbox
+    let menuStatus = document.getElementById('nav_toggle').checked;
+    // get label for menu to change it based on status
+    let menuLabel = document.getElementById('menu_label');
+    
+    // set menu label to hamburger or close icon based on status
+    if (menuStatus) {
+        menuLabel.innerHTML = '<i class="fa fa-times fa-2x" aria-hidden="true">';
+    } else {
+        menuLabel.innerHTML = '<i class="fa fa-bars fa-2x" aria-hidden="true">';
+    }
+
+    // if menu will intersect rotating elements
+    if (document.documentElement.clientWidth < 700) {
+        // get random wiki div in wiki viewer section
+        let randomWiki = document.getElementById('rotate_options');
+
+        // hide rotating elements on wiki viewer page if menu is open
+        if (menuStatus) {
+            randomWiki.style.display = 'none';
+        } else {
+            randomWiki.style.display = 'block';
+        }
+    }
+
+});

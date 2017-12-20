@@ -19,7 +19,7 @@
     bottom: 0;
     left: -200px;
    
-    z-index: 3;
+    z-index: 4;
 
     transition: left 0.3s;
     -webkit-transition: left 0.3s;
@@ -98,7 +98,7 @@
     clip: rect(0, 0, 0, 0);
 }
 
-label[for="nav-toggle"]{
+label[for="nav_toggle"]{
     width: 30px;
     height: 30px;
     
@@ -113,7 +113,7 @@ label[for="nav-toggle"]{
     color: #fff;
 }
 
-label[for="nav-toggle"]:hover,
+label[for="nav_toggle"]:hover,
 input[type=checkbox]:checked + label i
 {
     color: #d4d4d4;
@@ -504,8 +504,18 @@ ul {
     font-size: .75em;
 }
 
+/* set rule for everything but moz to keep animation from moving */
+@supports (-webkit-appearance:none) {
+    .random-wiki-options {
+        height: .75em;
+        line-height: .75em;
+    }
+}
+
 .random-wiki-options {
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    
     transition: all 1s;
 }
 
@@ -540,7 +550,9 @@ ul {
     opacity: 0;
     
     transition: all 1s;
+
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /************************************************************
@@ -628,7 +640,7 @@ ul {
     width: 300px;
 
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 30px;
     
     border: none;
     border-radius: 20px;
@@ -763,7 +775,7 @@ ul {
     
     /* LOC WEATHER */
     .temp {
-        font-size: 5em;
+        font-size: 4.5em;
     }
 
     .icon {
