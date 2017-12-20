@@ -1,4 +1,5 @@
 pageLoad();
+rotateRandom();
 
 // if JS loads correctly insert elements
 function pageLoad () {
@@ -132,8 +133,7 @@ function rotateRandom () {
 }
 */
 
-rotateRandom();
-
+// function to rotate random wiki section
 function rotateRandom () {
     // create var to iterate through animation
     let i = 0;

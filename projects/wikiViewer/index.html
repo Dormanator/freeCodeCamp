@@ -14,14 +14,32 @@
         <div class="row">
             <div class="col wiki-container">
                 <div id="random_wiki" class="col random-wiki">
-                    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random Wikipedia Article</a>
+                    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+                        <ul class="random-wiki-options" id="rotate-options" data-state="1">
+                            <li>Random Wikipedia Article</li>
+                            <li>New Knowledge to Discover</li>
+                            <li>A Way to Grow Your Brain</li>
+                            <li>New Topics to Discuss</li>
+                            <li>An Interesting Article</li>
+                            <li>New Information to Learn</li>
+                        </ul>
+                    </a>
                 </div>
                 <div id="search_wiki" class="search-container">
-                    <label for="search_field">
-                        <i class="fa fa-search search-icon" aria-hidden="true"></i>                                
-                    </label>
-                    <h3 id="warning">something went wrong with Javascript :(</h3>
+                    <form id="search_form" action="." autocomplete="off">
+                        <label for="search_field" id="search_label">
+                            <i class="fa fa-search search-icon" aria-hidden="true"></i>
+                            <i class="fa fa-times close-results" aria-hidden="true" id="close_results"></i>    <!-- Make appear when results appear -->                           
+                        </label>
+                        <h3 id="warning">something went wrong with Javascript :(</h3>
+                    </form>
                 </div>
+
+            </div>
+            <div class="col results-container">
+                <ul id="search_results" class="search-results col">
+                        <!-- incoming js appends -->
+                </ul>
             </div>
         </div>
     </section>

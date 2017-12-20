@@ -39,7 +39,7 @@ a {
 	width: 90%;
 	padding: 15px;
 	margin: auto;
-	justify-content: center;
+    justify-content: center;
 }
 
 .col {
@@ -49,34 +49,47 @@ a {
 
 /*
 *
-*       WIKI VIEWER STYLES
+*       GENERAL WIKI VIEWER LAYOUT & STYLES
 *
 */
 
 .wiki-container {
-    height: 90vh;
+    min-height: 50vh;
 
     font-size: 2em;
     font-family: 'Barlow Semi Condensed', sans-serif; 
     font-style: italic;
-    color: #fff;
 
     display: -webkit-flex;
 	-webkit-flex-wrap: wrap;
-	display: flex; flex-wrap: wrap;
-    align-content: center;
+    display: flex; flex-wrap: wrap;
+    align-content: flex-end;
     justify-content: center;
 }
 
-.search-container {
-    position: relative;
-    
+ul {
+    list-style: none;
 }
 
+/*
+*
+*      RANDOM WIKI VIEWER LAYOUT & STYLES
+*
+*/
+
 .random-wiki {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: center;
+
     font-size: .75em;
-    
-    margin-bottom: 20px;
+}
+
+.random-wiki-options {
+    transform-style: preserve-3d;
+    transition: all 1s;
 }
 
 .random-wiki a {
@@ -87,11 +100,106 @@ a {
     color: #c4c4c4;
 }
 
+.random-wiki ul {
+    width: 300px;
+
+    margin: 0;
+    margin-bottom: 35px;
+    padding: 0;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.random-wiki-options li {
+    position: absolute;
+    opacity: 0;
+    transition: all 1s;
+    backface-visibility: hidden;
+}
+
+/*
+*
+*      RANDOM WIKI ROTATION
+*
+*/
+
+/* create a 3d wheel out of the 6 list items that are 30px spaced vertically */
+.random-wiki-options li:nth-of-type(1) {
+    transform: rotateX(0deg)   translateZ(30px);
+    -webkit-transform: rotateX(0deg)   translateZ(30px);
+}
+.random-wiki-options li:nth-of-type(2) {
+    transform: rotateX(60deg)  translateZ(30px);
+    -webkit-transform: rotateX(60deg)  translateZ(30px);
+}
+.random-wiki-options li:nth-of-type(3) {
+    transform: rotateX(120deg) translateZ(30px);
+    -webkit-transform: rotateX(120deg) translateZ(30px);
+}
+.random-wiki-options li:nth-of-type(4) {
+    transform: rotateX(180deg) translateZ(30px);
+    -webkit-transform: rotateX(180deg) translateZ(30px);
+}
+.random-wiki-options li:nth-of-type(5) {
+    transform: rotateX(240deg) translateZ(30px);
+    -webkit-transform: rotateX(240deg) translateZ(30px);
+}
+.random-wiki-options li:nth-of-type(6) {
+    transform: rotateX(300deg) translateZ(30px);
+    -webkit-transform: rotateX(300deg) translateZ(30px);
+}
+
+/* making sure the current list item shown is opaque */
+.random-wiki-options[data-state="1"] li:nth-of-type(1),
+.random-wiki-options[data-state="2"] li:nth-of-type(2),
+.random-wiki-options[data-state="3"] li:nth-of-type(3),
+.random-wiki-options[data-state="4"] li:nth-of-type(4),
+.random-wiki-options[data-state="5"] li:nth-of-type(5),
+.random-wiki-options[data-state="6"] li:nth-of-type(6) { opacity: 1; }
+
+/*
+*
+*      SEARCH CONTAINER LAYOUT & STYLES
+*
+*/
+
+.search-container {
+    position: relative;
+}
+
 .search-container .search-icon {
     position: absolute;
+    
     left: 5px;
     top: 5px;
+    
     color: #363636;
+}
+
+
+.search-container .close-results { 
+    display: none;
+
+    cursor: pointer;
+    
+    position: absolute;
+    
+    right: 10px;
+    top: 5px;
+    
+    color: #363636;
+}
+
+.close-results:hover {
+    color: #4b4b4b;
+}
+
+.search-container label {
+    display: none;
 }
 
 .search-input {
@@ -105,4 +213,93 @@ a {
     border-radius: 20px;
 
     font-size: .8em;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 5px #c4c4c4;
+}
+
+/*
+*
+*      SEARCH RESULTS LAYOUT & STYLES
+*
+*/
+
+.results-container {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 1.5em;
+}
+
+.search-results {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+}
+
+.result {
+    width: 75%;
+
+    margin: 15px;
+    margin-top: 30px;
+
+    padding: 0px 20px 0px 20px;
+
+    background-color: #fff;
+
+    text-align: left;
+}
+
+.result h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    color: #818181;
+}
+
+.result a:hover h3 {
+    text-decoration: underline;
+}
+
+.result p {
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    color: #363636;
+}
+
+/*
+*
+*      SEARCH RESULTS MEDIA QUERIES
+*
+*/
+
+@media only screen and (max-device-width: 640px) {
+    .result h3 {
+        font-size: .8em;
+    }
+
+    .result p {
+        font-size: .8em;
+    }
+}
+
+@media only screen and (max-device-width: 480px) {
+    .result h3 {
+        font-size: .7em;
+    }
+
+    .result p {
+        font-size: .7em;
+    }
 }
