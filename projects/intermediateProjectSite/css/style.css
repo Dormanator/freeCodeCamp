@@ -119,11 +119,6 @@ input[type=checkbox]:checked + label i
     color: #d4d4d4;
 }
 
-input[type=checkbox]:checked + label i {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
 /************************************************************
 *
 *           NAVIGATION TOGGLE CONTROL
