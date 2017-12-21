@@ -516,10 +516,17 @@ ul {
 
 .random-wiki a {
     color: #818181;
+
+    margin-bottom: 50px;
+    padding-top: 30px;
+
+    border: 2px solid #818181;
+    border-radius: 20px;
 }
 
 .random-wiki a:hover {
     color: #c4c4c4;
+    border: 2px solid #c4c4c4;
 }
 
 .random-wiki ul {

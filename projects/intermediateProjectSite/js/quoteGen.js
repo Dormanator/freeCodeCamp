@@ -7,7 +7,6 @@ document.getElementById('btn_quote').addEventListener('click', (x) => {
     x.preventDefault;
     let num = genRan();
     api(num);
-    genBlur(document.getElementById('quote'), document.getElementById('author'));
 });
 
 // generate a 6 digit random number
@@ -18,6 +17,9 @@ function genRan(){
 
 // function called by teh API
 function grab(response){
+    // once we get a response blur the existing quote and author before we append new ones
+    genBlur(document.getElementById('quote'), document.getElementById('author'));
+
     document.getElementById('quote').textContent = quoteClean(response);
     document.getElementById('author').textContent = authorCheck(response);
     // update tweet button with new twitter link on api load

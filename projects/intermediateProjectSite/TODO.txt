@@ -1,0 +1,1 @@
+// adding loading indicators to show ajax calls are waiting for data - while waiting for new quote after button press || waiting on search results for wiki

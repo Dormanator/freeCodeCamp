@@ -130,5 +130,5 @@ function rotateRandom () {
         options.style.transform = 'rotateX(' + (i * -60) + 'deg)';
         // set the correct data state using 'i' and making sure its always a value between 1-6
         options.setAttribute('data-state', (i % 6) + 1);
-    }, 1500)
+    }, 600)
 }

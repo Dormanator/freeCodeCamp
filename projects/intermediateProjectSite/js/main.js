@@ -122,12 +122,15 @@ document.getElementById('nav_toggle').addEventListener( 'click', click => {
     if (document.documentElement.clientWidth < 700) {
         // get random wiki div in wiki viewer section
         let randomWiki = document.getElementById('rotate_options');
+        let randomLink = document.getElementById('random_link');
 
         // hide rotating elements on wiki viewer page if menu is open
         if (menuStatus) {
             randomWiki.style.display = 'none';
+            randomLink.style.display = 'none';
         } else {
             randomWiki.style.display = 'block';
+            randomLink.style.display = 'block';
         }
     }
 
