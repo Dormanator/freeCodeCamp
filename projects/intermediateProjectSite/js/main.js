@@ -26,7 +26,7 @@ document.getElementById('nav').addEventListener('click', x => {
 // set landing
 // if JS loaded up correctly change the message on the landing page to normal
 function setLanding () {
-    document.getElementById("landing_message").textContent = "Ryan's front-end API Projects";
+    document.getElementById("landing_message").textContent = "Front-End API Projects";
 }
 
 // showContent

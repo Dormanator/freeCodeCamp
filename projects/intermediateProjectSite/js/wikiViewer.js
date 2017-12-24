@@ -26,8 +26,25 @@ function pageLoad () {
 // EVENT LISTENER to monitor submits from form contianing input_field
 document.getElementById('search_form').addEventListener( 'submit', input => {
     input.preventDefault();
-    // grab user search parameters in input_field and replace spaces to prepare for API
-    let search = input.target[0].value.replace( /\s/g ,'%20');
+
+    // grab user search parameters in input_field and remove leading and trailing spaces
+    let search = input.target[0].value.replace( /^[ \s]+|[ \s]+$/g ,'');
+    
+    // validate input is 30 character or less and adjust search parameters 
+    if (search.length <= 29) {
+        // if valid input set search parameters with trimmed input
+        input.target[0].value = search;
+        // prepare for API use by replace spaces with '%20'
+        search = search.replace( /\s/g ,'%20');
+    } else {
+        // if input was not valid warn the user
+        alert('Your search input must be 30 characters or less');
+        // clear the invalid input
+        input.target[0].value = '';
+        // and return to stop API
+        return;
+    }
+
     // call fetchAPI and get search results based on input
     fetchAPI(search);
 });
@@ -40,12 +57,13 @@ function fetchAPI ( search = '' ) {
         'Api-User-Agent' : 'Example/1.0'
     });
 
-    // call fetch on API
+    // call fetch on API and display loading indicator
     fetch( API, {
         method: 'POST',
         headers: HEADER
         // check to make sure results are okay then return and parsed data
-    } ).then( results => {
+    }, searchIndicator(document.getElementById('search_results')) 
+        ).then( results => {
         if ( results.ok ) {
             return results.json();
         }
@@ -131,4 +149,10 @@ function rotateRandom () {
         // set the correct data state using 'i' and making sure its always a value between 1-6
         options.setAttribute('data-state', (i % 6) + 1);
     }, 600)
+}
+
+// function to indicate API fetch is occuring and search results are incoming
+function searchIndicator (object) {
+    // we just need to add the indicator in since the search contianer will be cleared when teh results are appended
+    object.innerHTML = '<div class="searching">Searching<div class="search-indicator"></div></div>';
 }
