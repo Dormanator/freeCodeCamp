@@ -52,3 +52,242 @@ a {
 #       Twitch API STYLES AND LAYOUTS
 #
 ***********************************************************/
+
+.twitch-container {
+    height: 98vh;
+
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #fff;
+}
+
+.col-50 {
+    width: 50%;
+    text-align: center;
+}
+
+.screen {
+    height: 75vh;
+    
+    margin: 5% 5% 0px;
+    padding-bottom: 0;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    border: 1.5em solid #808080;
+    border-radius: 75px;
+
+    font-size: 1.5em;
+}
+
+.left-stand {
+    height: 13vh;
+
+    margin: 0;
+    padding: 0;
+    
+    border-right: 2em solid #808080;
+}
+
+
+.right-stand {
+    height: 13vh;
+
+    margin: 0;
+    padding: 0;
+    
+    border-left: 2em solid #808080;
+}
+
+.bottom {
+    margin: 0px 20% 0px;
+
+    border-top: 2.5em solid #808080;
+    border-radius: 75px;
+}
+
+.top-left {
+    background-color: #ffee0096;
+   
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-top-left-radius: 35px;
+}
+
+.top-right {
+    background-color: #00ffff96;
+       
+    background-image: url("https://static-cdn.jtvnw.net/previews-ttv/live_user_syntaxse7en-540x260.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-top-right-radius: 35px;
+}
+
+.bottom-left {
+    background-color: #00ff0096;
+       
+    background-image: url("https://static-cdn.jtvnw.net/previews-ttv/live_user_syntaxse7en-540x260.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom-left-radius: 35px;
+}
+
+.bottom-right {
+    background-color: #ff00ea96;
+       
+    background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom-right-radius: 35px;
+}
+
+.screen-section {
+    height: 50%;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.screen-row-top {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 70%;
+
+    padding: 10px 20px 0px;
+
+    text-shadow: 1px 1px #363636;
+}
+
+.status-section {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.status-section div {
+    margin-right: 5px;
+}
+
+.twitch-live {
+    height: 15px;
+    width: 15px;
+
+    background-color: red;
+    opacity: .7;
+
+    border: 2px solid red;
+    border-radius: 50%;
+
+    animation: live-blink 1s linear infinite;
+}
+
+@keyframes live-blink {  
+    50% { opacity: 0; }
+  }
+
+.screen-row-bottom {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 30%;
+
+    margin: 0;
+
+    overflow-y: hidden;
+
+    background-color: #818181;
+    opacity: .75;
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease;
+}
+
+.screen-row-bottom-left {
+    border-bottom-left-radius: 35px !important;
+}
+
+.screen-row-bottom-right {
+    border-bottom-right-radius: 35px !important;
+}
+
+.screen-section:hover .screen-row-bottom {
+    transform: scaleY(1);
+}
+
+.bottom-screen-info {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 80%;
+    height: 100%;
+
+    padding-left: 15px;
+
+    font-size: .6em;
+    text-align: left;
+
+    border: 2px solid #fff;
+    border-right: none;
+}
+
+.bottom-screen-btn {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+
+    width: 20%;
+    height: 100%;
+
+    border: 2px solid #fff;
+}
+
+.screen-row-bottom a {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: inherit;
+
+    color: #fff;
+}
+
+.bottom-screen-btn a:hover {
+    color: #363636;
+}
+
+.fa-twitch {
+    color: #9dff00
+}
