@@ -2,6 +2,8 @@ pageLoad();
 
 // if JS loads correctly insert elements
 function pageLoad () {
+    // start rotating link
+    rotateRandom();
     
     // store container and default warning prompt in variable
     let container = document.getElementById('search_form');
@@ -112,27 +114,6 @@ document.getElementById('close_results').addEventListener( 'click', click => {
     // make sure the clear icon is hidden if the results were clear properly
     allowClear(container);
 });
-
-/* rotating random wiki container contents
-rotateRandom();
-
-function rotateRandom () {
-    
-    let increment = 0;
-    const options = $('#rotate-options');
-
-    setInterval(() => {
-        increment++;
-        options.css({
-            'transform': 'rotateX(' + (increment * -60) + 'deg)',
-            '-webkit-transform': 'rotateX(' + (increment * -60) + 'deg)'
-        })
-        options.attr('data-state', (increment % 6) + 1);
-    }, 1500)
-}
-*/
-
-rotateRandom();
 
 function rotateRandom () {
     // create var to iterate through animation

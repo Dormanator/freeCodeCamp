@@ -1,8 +1,9 @@
 pageLoad();
-rotateRandom();
 
 // if JS loads correctly insert elements
 function pageLoad () {
+    // start rotating link
+    rotateRandom();
     
     // store container and default warning prompt in variable
     let container = document.getElementById('search_form');
