@@ -48,9 +48,9 @@ a {
 }
 
 /**********************************************************
-#
-#       Twitch API STYLES AND LAYOUTS
-#
+*
+*       twitch.tv SCREEN STYLE & LAYOUT
+*
 ***********************************************************/
 
 .twitch-container {
@@ -116,20 +116,44 @@ a {
 }
 
 .top-left {
+    border-right: 1px solid #818181;
+    border-bottom: 1px solid #818181;
+
     border-top-left-radius: 35px;
 }
 
 .top-right {
+    border-left: 1px solid #818181;
+    border-bottom: 1px solid #818181;
+
     border-top-right-radius: 35px;
 }
 
 .bottom-left {
+    border-right: 1px solid #818181;
+    border-top: 1px solid #818181;
+
     border-bottom-left-radius: 35px;
 }
 
 .bottom-right {
+    border-left: 1px solid #818181;
+    border-top: 1px solid #818181;
+
     border-bottom-right-radius: 35px;
 }
+
+.fa-twitch {
+    position: relative;
+    top: 10px;
+    color: #6441A4;
+}
+
+/**********************************************************
+*
+*       twitch.tv SCREEN SECTIONS STYLE & LAYOUT
+*
+***********************************************************/
 
 .screen-section {
     height: 50%;
@@ -271,11 +295,12 @@ a {
     color: #363636;
 }
 
-.fa-twitch {
-    color: #9dff00
-}
+/**********************************************************
+*
+*       twitch.tv SCALING FOR SMALL SCREENS
+*
+***********************************************************/
 
-/* Scale down normal content */
 @media only screen and (max-device-width: 1200px) {
     .screen-row-top {
         height: 40%;
@@ -291,7 +316,12 @@ a {
     }
 }
 
-/* Switch to mobile version */
+/**********************************************************
+*
+*       twitch.tv MOBILE VERSION
+*
+***********************************************************/
+
 @media only screen and (max-device-width: 740px) {
 
     .col-50 {
@@ -320,6 +350,13 @@ a {
     
     .bottom {
         display: none;
+    }
+
+    .fa-twitch {
+        position: absolute;
+        bottom: 95%;
+
+        font-size: 2em;
     }
     
     .top-left {
@@ -409,6 +446,6 @@ a {
     }
 
     .bottom-screen-btn a:hover {
-        color: #818181;
+        color: #363636;
     }
 }

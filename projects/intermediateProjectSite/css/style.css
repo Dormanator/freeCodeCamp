@@ -772,11 +772,279 @@ ul {
     color: #363636;
 }
 
+/**********************************************************
+*
+*       twitch.tv SCREEN STYLE & LAYOUT
+*
+***********************************************************/
+
+.twitch-container {
+    height: 98vh;
+
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #fff;
+}
+
+.col-50 {
+    width: 50%;
+    text-align: center;
+}
+
+.screen {
+    height: 73vh;
+    
+    margin: 5% 5% 0px;
+    padding-bottom: 0;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    border: 1.5em solid #808080;
+    border-radius: 75px;
+
+    font-size: 1.5em;
+}
+
+@supports (-webkit-appearance:none) {
+    .screen {
+        height: 70vh;
+    }
+}
+
+.left-stand {
+    height: 13vh;
+
+    margin: 0;
+    padding: 0;
+    
+    border-right: 2em solid #808080;
+}
+
+
+.right-stand {
+    height: 13vh;
+
+    margin: 0;
+    padding: 0;
+    
+    border-left: 2em solid #808080;
+}
+
+.bottom {
+    margin: 0px 20% 0px;
+
+    border-top: 2.5em solid #808080;
+    border-radius: 75px;
+}
+
+.top-left {
+    border-right: 1px solid #818181;
+    border-bottom: 1px solid #818181;
+
+    border-top-left-radius: 35px;
+}
+
+.top-right {
+    border-left: 1px solid #818181;
+    border-bottom: 1px solid #818181;
+
+    border-top-right-radius: 35px;
+}
+
+.bottom-left {
+    border-right: 1px solid #818181;
+    border-top: 1px solid #818181;
+
+    border-bottom-left-radius: 35px;
+}
+
+.bottom-right {
+    border-left: 1px solid #818181;
+    border-top: 1px solid #818181;
+
+    border-bottom-right-radius: 35px;
+}
+
+.fa-twitch {
+    position: relative;
+    top: 10px;
+    color: #6441A4;
+}
+
+/**********************************************************
+*
+*       twitch.tv SCREEN SECTIONS STYLE & LAYOUT
+*
+***********************************************************/
+
+.screen-section {
+    height: 50%;
+
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background: linear-gradient(
+    90deg,
+    #ffee0096 25%,
+    #00ffff96 25%,
+    #00ffff96 50%,
+    #00ff0096 50%,
+    #00ff0096 75%,
+    #ff00ea96 0%
+    );
+}
+
+.screen-row-top {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 65%;
+
+    padding: 10px 20px 0px;
+
+    text-shadow:
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.status-section {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    text-transform: capitalize;
+}
+
+.status-section div {
+    margin-right: 5px;
+}
+
+.twitch-live {
+    height: 15px;
+    width: 15px;
+
+    background-color: red;
+    opacity: .7;
+
+    border: 2px solid red;
+    border-radius: 50%;
+
+    animation: live-blink 1s linear infinite;
+}
+
+@keyframes live-blink {  
+    50% { opacity: 0; }
+  }
+
+.screen-row-bottom {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 35%;
+
+    margin: 0;
+
+    overflow-y: hidden;
+
+    background-color: #818181;
+    opacity: .75;
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s ease;
+}
+
+.screen-section:hover .screen-row-bottom {
+    transform: scaleY(1);
+}
+
+.bottom-screen-info {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 80%;
+    height: 100%;
+
+    padding: 0px 15px 0px;
+
+    font-size: .6em;
+    text-align: left;
+
+    border: 2px solid #fff;
+    border-right: none;
+}
+
+.bottom-screen-btn {
+    color: #fff;
+
+    width: 20%;
+    height: 100%;
+
+    border: 2px solid #fff;
+}
+
+.screen-row-bottom a {
+    display: -webkit-flex;
+	-webkit-flex-wrap: wrap;
+	display: flex; flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: inherit;
+
+    color: #fff;
+}
+
+.bottom-screen-btn a:hover {
+    color: #363636;
+}
+
 /************************************************************
 *
-*           MEDIA QUERIES
+*           GENERAL MEDIA QUERIES
 *
 *************************************************************/
+@media only screen and (max-device-width: 1200px) {
+    /*  TWITCH.TV */
+    .screen-row-top {
+        height: 40%;
+    }
+    .screen-row-bottom {
+        height: 60%;
+    }
+}
+
+@media only screen and (max-device-width: 1000px) {
+    /*  TWITCH.TV */
+    .screen {
+        font-size: 1.25em;
+    }
+}
 
 @media only screen and (max-device-width: 640px) {
     
@@ -849,5 +1117,141 @@ ul {
 
     .result p {
         font-size: .7em;
+    }
+}
+
+/**********************************************************
+*
+*       twitch.tv MOBILE VERSION
+*
+***********************************************************/
+
+@media only screen and (max-device-width: 740px) {
+
+    .col-50 {
+        width: 100%;
+    }
+    
+    .screen {
+        min-height: 73vh;
+        
+        margin: 0;
+        padding: 0;
+
+        border: none;
+        border-radius: 0px;
+
+        font-size: 1.5em;
+    }
+
+    .left-stand {
+        display: none;
+    }
+    
+    .right-stand {
+        display: none;
+    }
+    
+    .bottom {
+        display: none;
+    }
+
+    .fa-twitch {
+        position: absolute;
+        bottom: 95%;
+
+        font-size: 2em;
+    }
+    
+    .top-left {
+        border-top-left-radius: 0px;
+    }
+    
+    .top-right {
+        border-top-right-radius: 0px;
+    }
+    
+    .bottom-left {
+        border-bottom-left-radius: 0px;
+    }
+    
+    .bottom-right {
+        border-bottom-right-radius: 0px;
+    }
+
+    .screen-section {
+        margin-top: 15px;
+
+        border: 2px solid #fff;
+    
+        background: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: 75px 75px;
+        background-origin: padding-box;
+    }
+    
+    .screen-row-top {
+        height: 70%;
+
+        padding: 0px 10px 0px;
+
+        text-shadow: none;
+    }
+
+    .name-section,
+    .game-section,
+    .status-section {
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .name-section {
+        display: -webkit-flex;
+        -webkit-flex-wrap: wrap;
+        display: flex; flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .game-section {
+        display: -webkit-flex;
+        -webkit-flex-wrap: wrap;
+        display: flex; flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .screen-row-bottom {
+        align-items: flex-end;
+        justify-content: space-between;
+    
+        opacity: 1;
+
+        height: 30%;
+    
+        transform: scaleY(1);
+    }
+    
+    .bottom-screen-info {
+        display: none;
+    }
+    
+    .bottom-screen-btn {
+        width: 100%;
+
+        border: none;
+        border-top: 2px solid #fff;
+    }
+
+    .screen-row-bottom a {
+        justify-content: center;
+    }
+
+    .bottom-screen-btn a:hover {
+        color: #363636;
     }
 }

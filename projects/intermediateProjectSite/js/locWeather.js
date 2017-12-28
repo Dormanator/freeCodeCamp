@@ -154,7 +154,7 @@ function geoSuccess (response) {
     let lat = Math.round(response.coords.latitude);
     let long = Math.round(response.coords.longitude);
 
-    // print lat and lon to DOM for testing
+    // print let user know js is working
     $("#text").html(`Loading...`);
     // pass successful geoLocation to weather function for weather API request
     getWeather(lat, long);

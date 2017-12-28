@@ -118,7 +118,7 @@ document.getElementById('nav_toggle').addEventListener( 'click', click => {
         menuLabel.innerHTML = '<i class="fa fa-bars fa-2x" aria-hidden="true">';
     }
 
-    // if menu will intersect rotating elements
+    // if menu will intersect rotating elements on wiki viewer page
     if (document.documentElement.clientWidth < 700) {
         // get random wiki div in wiki viewer section
         let randomWiki = document.getElementById('rotate_options');
