@@ -1,10 +1,16 @@
 // call twitch api on section click to ensure the screen is being displayed and the width and height of teh sections can be queried for teh bg image
 document.getElementById('twitch_tv').addEventListener( 'click', () => {
-    twitchInitalize();
-    // have teh api call reoccure every 60 second to check online status and update bg images
-    setInterval( () => {
+    let twitchContent = document.getElementById('twitch_tv_content');
+    // check to make sure api is only called when displaying section not closing it
+    // don't want to max out our 30 API calls per minute or try to get elements not being displayed
+    if (twitchContent.style.display === 'none') {
+        console.log(true);
         twitchInitalize();
-    }, 60000);
+        // have teh api call reoccure every 60 second to check online status and update bg images
+        setInterval( () => {
+            twitchInitalize();
+        }, 60000);
+    }
 });
 
 // runs on page-load to start API calls and eliminate polluting the global scope
