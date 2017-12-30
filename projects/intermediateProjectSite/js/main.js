@@ -1,6 +1,14 @@
+// set the inital content on load
 setLanding();
 showContent();
 showInfo();
+// create event listeners to close menu on section clicked
+closeMenu(document.getElementsByClassName('content'), document.getElementById('nav_toggle'));
+// control for reload
+// make sure the menu label is set properly and the random wikiviewer element is hidden on mobile if teh menu is open
+menuLabelToggel(document.getElementById('nav_toggle').checked, document.getElementById('menu_label'));
+randomWikiControl(document.getElementById('rotate_options'), document.getElementById('random_link'), document.getElementById('nav_toggle').checked);
+
 
 // adds event listeners to nav-items, adn locates items to be displayed based on nav-items id
 // nav-item ids are classes on elements to be displayed to locate and idexes them
@@ -73,9 +81,6 @@ function showInfo ( infoElement = {} ) {
         infoElement.style.display = 'block';   
     }
 }
- 
-
-
 
 // setCurrent
 // create function to check for current-nav on items except param input, remove it if it exists on other items and apply it to the element associated with param input if its not already
@@ -102,36 +107,56 @@ function setCurrent ( navLink ) {
     }
 }
 
-
 // function to change aspects of site based on menu status
 document.getElementById('nav_toggle').addEventListener( 'click', click => {
     
-    // get value of checkbox
-    let menuStatus = document.getElementById('nav_toggle').checked;
-    // get label for menu to change it based on status
-    let menuLabel = document.getElementById('menu_label');
-    
-    // set menu label to hamburger or close icon based on status
-    if (menuStatus) {
-        menuLabel.innerHTML = '<i class="fa fa-times fa-2x" aria-hidden="true">';
-    } else {
-        menuLabel.innerHTML = '<i class="fa fa-bars fa-2x" aria-hidden="true">';
-    }
+    // call function to check and toggle menu label
+    menuLabelToggel(document.getElementById('nav_toggle').checked, document.getElementById('menu_label'));
 
-    // if menu will intersect rotating elements on wiki viewer page
-    if (document.documentElement.clientWidth < 700) {
-        // get random wiki div in wiki viewer section
-        let randomWiki = document.getElementById('rotate_options');
-        let randomLink = document.getElementById('random_link');
-
-        // hide rotating elements on wiki viewer page if menu is open
-        if (menuStatus) {
-            randomWiki.style.display = 'none';
-            randomLink.style.display = 'none';
-        } else {
-            randomWiki.style.display = 'block';
-            randomLink.style.display = 'block';
-        }
-    }
+    randomWikiControl(document.getElementById('rotate_options'), document.getElementById('random_link'), document.getElementById('nav_toggle').checked);
 
 });
+
+// function for showing correct menu label based on menu status
+function menuLabelToggel (status, label) {
+    
+    // set menu label to hamburger or close icon based on status
+    if (status) {
+        label.innerHTML = '<i class="fa fa-times fa-2x" aria-hidden="true">';
+    } else {
+        label.innerHTML = '<i class="fa fa-bars fa-2x" aria-hidden="true">';
+    }
+}
+
+// function for showing random wiki container based on menu status
+function randomWikiControl (elementOne, elementTwo, status) {
+    // if menu will intersect rotating elements on wiki viewer page
+    if (document.documentElement.clientWidth < 700) {
+
+        // hide rotating elements on wiki viewer page if menu is open
+        if (status) {
+            elementOne.style.display = 'none';
+            elementTwo.style.display = 'none';
+        } else {
+            elementOne.style.display = 'block';
+            elementTwo.style.display = 'block';
+        }
+    }
+}
+
+// function to close menu when section area is clicked
+function closeMenu (sections, menuToggle) {
+    // turn the sections HTMLcollection into an array
+    sections = Array.from(sections);
+    // iterate through array and add event listeners to sections
+    sections.forEach(element => {
+        element.addEventListener('click', section => {
+            // if menu is open, close menu and make sure label changes too
+            if(menuToggle.checked){
+                menuToggle.checked = false;
+                menuLabelToggel(menuToggle.checked, document.getElementById('menu_label'));
+                randomWikiControl(document.getElementById('rotate_options'), document.getElementById('random_link'), document.getElementById('nav_toggle').checked);
+            }
+        });
+    });
+}

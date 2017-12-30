@@ -45,7 +45,8 @@ document.getElementById('search_form').addEventListener( 'submit', input => {
         // and return to stop API
         return;
     }
-
+    
+    document.getElementById('search_field').blur();
     // call fetchAPI and get search results based on input
     fetchAPI(search);
 });
