@@ -1,7 +1,13 @@
-pageLoad();
+pageLoadWiki();
 
-// if JS loads correctly insert elements
-function pageLoad () {
+/****************************************************
+ * 
+ * 
+ *              PAGE LOAD FUNCTION
+ * 
+ * 
+ ****************************************************/
+function pageLoadWiki () {
     // start rotating link
     rotateRandom();
     
@@ -24,7 +30,38 @@ function pageLoad () {
     document.getElementById('search_label').style.display = 'block';
 }
 
-// EVENT LISTENER to monitor submits from form contianing input_field
+/****************************************************
+ * 
+ * 
+ *              ROTATE RANDOM WIKI TEXT
+ * 
+ * 
+ ****************************************************/
+function rotateRandom () {
+    // create var to iterate through animation
+    let i = 0;
+    // get container random wiki option list
+    const options = document.getElementById('rotate_options');
+
+    // set timed interval to continuosly rotate the list
+    setInterval(() => {
+        // incremet each pass through so we can continuously rotate the list down and back
+        i++;
+        // rotate the list down on the x-axis by 60 deg since there are 6 items in the list
+        options.style.webkitTransform = 'rotateX(' + (i * -60) + 'deg)';
+        options.style.transform = 'rotateX(' + (i * -60) + 'deg)';
+        // set the correct data state using 'i' and making sure its always a value between 1-6
+        options.setAttribute('data-state', (i % 6) + 1);
+    }, 600)
+}
+
+/****************************************************
+ * 
+ * 
+ *              EVENT LISTENER ON INPUT FIELD
+ * 
+ * 
+ ****************************************************/
 document.getElementById('search_form').addEventListener( 'submit', input => {
     input.preventDefault();
 
@@ -51,7 +88,13 @@ document.getElementById('search_form').addEventListener( 'submit', input => {
     fetchAPI(search);
 });
 
-// have fetchAPI pass response to append results if success else throw error ## create catch?
+/****************************************************
+ * 
+ * 
+ *              CALL FETCH ON API
+ * 
+ * 
+ ****************************************************/
 function fetchAPI ( search = '' ) {
     // store necessary data for API call
     const API = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' + search;
@@ -77,7 +120,13 @@ function fetchAPI ( search = '' ) {
       ).catch( error => console.log(error) );
 }
 
-// iterate through search results and append
+/****************************************************
+ * 
+ * 
+ *              ADD API RESULTS TO PAGE
+ * 
+ * 
+ ****************************************************/
 function appendResults ( input ) {
     let container = document.getElementById('search_results');
 
@@ -107,7 +156,13 @@ function appendResults ( input ) {
     allowClear(container);
 }
 
-// enable user to clear their search input and results
+/****************************************************
+ * 
+ * 
+ *              FUNCTIONS TO CLEAR SEARC RESULTS
+ * 
+ * 
+ ****************************************************/
 function allowClear( container ) {
     // save icon for clear results to var
     let clearIcon = document.getElementById('close_results');
@@ -134,26 +189,13 @@ document.getElementById('close_results').addEventListener( 'click', click => {
     allowClear(container);
 });
 
-// function to rotate random wiki section
-function rotateRandom () {
-    // create var to iterate through animation
-    let i = 0;
-    // get container random wiki option list
-    const options = document.getElementById('rotate_options');
-
-    // set timed interval to continuosly rotate the list
-    setInterval(() => {
-        // incremet each pass through so we can continuously rotate the list down and back
-        i++;
-        // rotate the list down on the x-axis by 60 deg since there are 6 items in the list
-        options.style.webkitTransform = 'rotateX(' + (i * -60) + 'deg)';
-        options.style.transform = 'rotateX(' + (i * -60) + 'deg)';
-        // set the correct data state using 'i' and making sure its always a value between 1-6
-        options.setAttribute('data-state', (i % 6) + 1);
-    }, 600)
-}
-
-// function to indicate API fetch is occuring and search results are incoming
+/****************************************************
+ * 
+ * 
+ *              FETCH INDICATOR
+ * 
+ * 
+ ****************************************************/
 function searchIndicator (object) {
     // we just need to add the indicator in since the search contianer will be cleared when teh results are appended
     object.innerHTML = '<div class="searching">Searching<div class="search-indicator"></div></div>';

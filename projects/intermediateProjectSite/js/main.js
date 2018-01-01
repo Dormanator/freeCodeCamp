@@ -1,15 +1,31 @@
-// set the inital content on load
-setLanding();
-showContent();
-showInfo();
-// create event listeners to close menu on section clicked
-closeMenu(document.getElementsByClassName('content'), document.getElementById('nav_toggle'));
-// control for reload
-// make sure the menu label is set properly and the random wikiviewer element is hidden on mobile if teh menu is open
-menuLabelToggel(document.getElementById('nav_toggle').checked, document.getElementById('menu_label'));
-randomWikiControl(document.getElementById('rotate_options'), document.getElementById('random_link'), document.getElementById('nav_toggle').checked);
+siteLoad();
 
+/****************************************************
+ * 
+ * 
+ *              SET INITAL SITE CONTENT
+ * 
+ * 
+ ****************************************************/
+function siteLoad () {
+    setLanding();
+    showContent();
+    showInfo();
+    // create event listeners to close menu on section clicked
+    closeMenu(document.getElementsByClassName('content'), document.getElementById('nav_toggle'));
+    // control for reload
+    // make sure the menu label is set properly and the random wikiviewer element is hidden on mobile if teh menu is open
+    menuLabelToggel(document.getElementById('nav_toggle').checked, document.getElementById('menu_label'));
+    randomWikiControl(document.getElementById('rotate_options'), document.getElementById('random_link'), document.getElementById('nav_toggle').checked);
+}
 
+/****************************************************
+ * 
+ * 
+ *              NAV ITEM EVENT LISTENERS
+ * 
+ * 
+ ****************************************************/
 // adds event listeners to nav-items, adn locates items to be displayed based on nav-items id
 // nav-item ids are classes on elements to be displayed to locate and idexes them
 document.getElementById('nav').addEventListener('click', x => {
@@ -31,13 +47,25 @@ document.getElementById('nav').addEventListener('click', x => {
     
 }, false);
 
-// set landing
+/****************************************************
+ * 
+ * 
+ *              SET LANDING MESSAGE
+ * 
+ * 
+ ****************************************************/
 // if JS loaded up correctly change the message on the landing page to normal
 function setLanding () {
     document.getElementById("landing_message").textContent = "Front-End API Projects";
 }
 
-// showContent
+/****************************************************
+ * 
+ * 
+ *              SET CONTENT SECTION TO BE DISPLAYED
+ * 
+ * 
+ ****************************************************/
 // create function to show element input as param
 function showContent ( contentElement ) {
 
@@ -59,7 +87,13 @@ function showContent ( contentElement ) {
     contentElement.style.display = 'block';
 }
 
-// showInfo
+/****************************************************
+ * 
+ * 
+ *              SET NAV INFO SECTIONS DISPLAYED
+ * 
+ * 
+ ****************************************************/
 // create function to show element input as param
 function showInfo ( infoElement = {} ) {
 
@@ -82,7 +116,13 @@ function showInfo ( infoElement = {} ) {
     }
 }
 
-// setCurrent
+/****************************************************
+ * 
+ * 
+ *              SET CURRENT NAV ITEM
+ * 
+ * 
+ ****************************************************/
 // create function to check for current-nav on items except param input, remove it if it exists on other items and apply it to the element associated with param input if its not already
 function setCurrent ( navLink ) {
     // vars for elements with 'content' class
@@ -107,7 +147,13 @@ function setCurrent ( navLink ) {
     }
 }
 
-// function to change aspects of site based on menu status
+/****************************************************
+ * 
+ * 
+ *      SET LABEL AND CONTENT BASED ON MENU STATUS
+ * 
+ * 
+ ****************************************************/
 document.getElementById('nav_toggle').addEventListener( 'click', click => {
     
     // call function to check and toggle menu label
@@ -144,7 +190,13 @@ function randomWikiControl (elementOne, elementTwo, status) {
     }
 }
 
-// function to close menu when section area is clicked
+/****************************************************
+ * 
+ * 
+ *              CLOSE MENU ON SITE CLICK
+ * 
+ * 
+ ****************************************************/
 function closeMenu (sections, menuToggle) {
     // turn the sections HTMLcollection into an array
     sections = Array.from(sections);

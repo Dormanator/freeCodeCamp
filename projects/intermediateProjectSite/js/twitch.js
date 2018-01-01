@@ -1,10 +1,16 @@
+/****************************************************
+ * 
+ * 
+ *        CALL API WHEN TWITCH SECTION IS OPENED
+ * 
+ * 
+ ****************************************************/
 // call twitch api on section click to ensure the screen is being displayed and the width and height of teh sections can be queried for teh bg image
 document.getElementById('twitch_tv').addEventListener( 'click', () => {
     let twitchContent = document.getElementById('twitch_tv_content');
     // check to make sure api is only called when displaying section not closing it
     // don't want to max out our 30 API calls per minute or try to get elements not being displayed
     if (twitchContent.style.display === 'none') {
-        console.log(true);
         twitchInitalize();
         // have teh api call reoccure every 60 second to check online status and update bg images
         setInterval( () => {
@@ -13,7 +19,13 @@ document.getElementById('twitch_tv').addEventListener( 'click', () => {
     }
 });
 
-// runs on page-load to start API calls and eliminate polluting the global scope
+/****************************************************
+ * 
+ * 
+ *              PAGE LOAD FUNCTION
+ * 
+ * 
+ ****************************************************/
 function twitchInitalize () {
     // indicate js is working
     let nameSection = document.getElementsByClassName('name-section');
@@ -22,13 +34,19 @@ function twitchInitalize () {
     }
 
     // user array to get detail and stream status of
-    const twitchUsers = ['freecodecamp', 'lirik', 'TrumpSC', 'preachlfw']; //  'dunkstream',
+    const twitchUsers = ['freecodecamp', 'lirik', 'TrumpSC', 'preachlfw'];
     // call async Twitch API fetch function to get user information and then stream status
     getTwitchAPI('users', twitchUsers);
     getTwitchAPI('streams', twitchUsers);
 }
 
-// function to fetch specified user data in mass promise
+/****************************************************
+ * 
+ * 
+ *              ASYNC FETCH FUNCTION
+ * 
+ * 
+ ****************************************************/
 async function getTwitchAPI (type, names) {
     // store API verification ID
     const CLIENT_ID = '?client_id=jl9f26ph41bzop9hpcpdzftzg75v0xp';
@@ -57,19 +75,25 @@ async function getTwitchAPI (type, names) {
     });
 }
 
-// function to append API results to site
+/****************************************************
+ * 
+ * 
+ *              APPEND USER DATA
+ * 
+ * 
+ ****************************************************/
 function twitchUserAppend(data) {
     // get elements associated with proper classes
     let nameSection = document.getElementsByClassName('name-section');
     let infoSection = document.getElementsByClassName('bottom-screen-info');
-    let externalLinks = document.getElementsByClassName('bottom-screen-btn');
+    let externalLinks = document.querySelectorAll('.bottom-screen-btn a');
     let screenSection = document.getElementsByClassName('screen-section');
 
     // iterate through user data and append to proper elements
     for (let i = 0; i < data.length; i++) {
         nameSection[i].textContent = data[i].name;
         infoSection[i].textContent = data[i].bio;
-        externalLinks[i].innerHTML = `<a href="https://twitch.tv/${data[i].name}" target="_blank"><i class="fa fa-external-link fa-2x twitch-link-icon" aria-hidden="true"></i></a>`;
+        externalLinks[i].href = `https://twitch.tv/${data[i].name}`;
 
         // if using mobile version set as background image as users logo
         if (document.documentElement.clientWidth <= 740) {
@@ -78,6 +102,13 @@ function twitchUserAppend(data) {
     }
 }
 
+/****************************************************
+ * 
+ * 
+ *              APPEND STATUS DATA
+ * 
+ * 
+ ****************************************************/
 function twitchStatusAppend(data) {
     // get elements associated with proper classes
     let statusSection = document.getElementsByClassName('status-section');

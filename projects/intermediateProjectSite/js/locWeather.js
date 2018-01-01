@@ -1,30 +1,86 @@
 geoLocation();
 
+/****************************************************
+ * 
+ * 
+ *              GEOLOCATION RETREVIAL
+ * 
+ * 
+ ****************************************************/
+
+function geoLocation () {
+    // if geolocation is avaliable in the browser
+    if (navigator.geolocation) {
+        // get users current position
+        navigator.geolocation.getCurrentPosition( geoSuccess , geoFail );
+    } else {
+        // if not avail in broswer let user know
+        $("#text").html("Geolocation not avaliable in your browser :("); 
+    }
+        // if JS and JQuery worked successfully let user know we are at work
+        $("#text").html("Trying to get your position...");
+};
+
+// function the succesful geolocation query calls
+function geoSuccess (response) {
+    // isolcate the lat and long w/o decimals to conform to the API requirements
+    let lat = Math.round(response.coords.latitude);
+    let long = Math.round(response.coords.longitude);
+
+    // print let user know js is working
+    $("#text").html(`Loading...`);
+    // pass successful geoLocation to weather function for weather API request
+    getWeather(lat, long);
+}
+
+// function the failed geolocation query calls
+function geoFail () {
+    $("#text").html("Unable to get your position :(");
+}
 
 /****************************************************
  * 
  * 
- *              WEATHER CONVERSION CLICK
+ *              WEATHER API REQUEST
  * 
  * 
  ****************************************************/
-$("#convert").click(convert);
 
-function convert () {
+function getWeather (lat, long) {
+    // save API address to call
+    const API = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + long;
+    
+    // JSON API request with freeCodeCamp weather API and handleWeather as its callback function
+    $.getJSON(API).done(handleWeather).fail(noWeather);
+}
 
-    // grab the format of teh temperature (C or F) and its value
-    let format = $("#temp").html().replace(/[^CF]/g,'');
-    let value = $("#temp").html();
+function handleWeather (response) {
+    
+    // weather object to store values of interest from API, making global so it can be passed into click event functions
+    weather = {
+    city: response.name,
+    id: response.weather[0].id,
+    desc: response.weather[0].description,
+    celcius: Math.round(response.main.temp) + '&deg;C',
+    farenheit: Math.round((response.main.temp * 9/5) + 32) + '&deg;F',
+    sunrise: response.sys.sunrise,
+    sunset: response.sys.sunset,
+    };
 
-    // if celcius convert to farenheit, else vice versa
-    if (format === 'C') {
-        value = weather.farenheit;
-    } else {
-        value = weather.celcius;
-    }
+    $("#image").html('<i class="fa fa-sun-o icon" aria-hidden="true"></i>');
+    // call function to determine background icon
+    weatherIcon(weather.sunrise, weather.sunset, weather.id);
 
-    // append converted temp to DOM
-    $("#temp").html(value);
+    // append temperature and description
+    $("#temp").html(weather.farenheit);
+    $("#text").html(weather.desc);
+
+    // show convert button now that temp is appended
+    $("#convert").html('<i class="fa fa-random fa-lg" aria-hidden="true"></i>');
+}
+
+function noWeather () {
+    $("#text").html("Something went wrong with the API request :( \n Please try again in a moment");
 }
 
 /****************************************************
@@ -77,90 +133,30 @@ function convert () {
         } else {
             $("#image").html('<i class="fa fa-bolt icon" aria-hidden="true"></i>');
         }
-        
-    // console.log(day); // T or F for daytime
     }
 
 /****************************************************
  * 
  * 
- *              WEATHER API REQUEST
+ *              WEATHER CONVERSION CLICK
  * 
  * 
  ****************************************************/
+$("#convert").click(convert);
 
-function getWeather (lat, long) {
-    // save API address to call
-    const API = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + long;
-    
-    // JSON API request with freeCodeCamp weather API and handleWeather as its callback function
-    $.getJSON(API).done(handleWeather).fail(noWeather);
-}
+function convert () {
 
-function handleWeather (response) {
-    
-    // weather object to store values of interest from API, making global so it can be passed into click event functions
-    weather = {
-    city: response.name,
-    id: response.weather[0].id,
-    desc: response.weather[0].description,
-    celcius: Math.round(response.main.temp) + '&deg;C',
-    farenheit: Math.round((response.main.temp * 9/5) + 32) + '&deg;F',
-    sunrise: response.sys.sunrise,
-    sunset: response.sys.sunset,
-    };
+    // grab the format of teh temperature (C or F) and its value
+    let format = $("#temp").html().replace(/[^CF]/g,'');
+    let value = $("#temp").html();
 
-    $("#image").html('<i class="fa fa-sun-o icon" aria-hidden="true"></i>');
-    // call function to determine background icon
-    weatherIcon(weather.sunrise, weather.sunset, weather.id);
-
-    // append temperature and description
-    $("#temp").html(weather.farenheit);
-    $("#text").html(weather.desc);
-
-    // show convert button now that temp is appended
-    $("#convert").html('<i class="fa fa-random fa-lg" aria-hidden="true"></i>');
-}
-
-function noWeather () {
-    $("#text").html("Something went wrong with the API request :( \n Please try again in a moment");
-}
-
-
-/****************************************************
- * 
- * 
- *              GEOLOCATION RETREVIAL
- * 
- * 
- ****************************************************/
-
-function geoLocation () {
-    // if geolocation is avaliable in the browser
-    if (navigator.geolocation) {
-        // get users current position
-        navigator.geolocation.getCurrentPosition( geoSuccess , geoFail );
+    // if celcius convert to farenheit, else vice versa
+    if (format === 'C') {
+        value = weather.farenheit;
     } else {
-        // if not avail in broswer let user know
-        $("#text").html("Geolocation not avaliable in your browser :("); 
+        value = weather.celcius;
     }
-        // if JS and JQuery worked successfully let user know we are at work
-        $("#text").html("Trying to get your position...");
-}
 
-// function the succesful geolocation query calls
-function geoSuccess (response) {
-    // isolcate the lat and long w/o decimals to conform to the API requirements
-    let lat = Math.round(response.coords.latitude);
-    let long = Math.round(response.coords.longitude);
-
-    // print let user know js is working
-    $("#text").html(`Loading...`);
-    // pass successful geoLocation to weather function for weather API request
-    getWeather(lat, long);
-}
-
-// function the failed geolocation query calls
-function geoFail () {
-    $("#text").html("Unable to get your position :(");
+    // append converted temp to DOM
+    $("#temp").html(value);
 }
