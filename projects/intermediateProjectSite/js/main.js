@@ -78,7 +78,7 @@ function showContent ( contentElement ) {
     }
 
     // set all elements with 'content' class to none
-    for (let i = 0; i < sections.length; i++) {   
+    for (let i = 0, x = sections.length; i < x; i++) {   
 
         sections[i].style.display = 'none';
     }
@@ -106,7 +106,7 @@ function showInfo ( infoElement = {} ) {
     }
 
     // set all elements with 'content' class to none except the given element
-    for (let i = 0; i < panels.length; i++) {   
+    for (let i = 0, x = panels.length; i < x; i++) {   
         panels[i].style.display = 'none';
     }
 
@@ -134,7 +134,7 @@ function setCurrent ( navLink ) {
     }
 
     // checking all navLinks with 'nav-item for 'current-nav' and removing it
-    for (let i = 0; i < links.length; i++) {
+    for (let i = 0, x = links.length; i < x; i++) {
 
         if(links[i].classList.contains('current-nav')) { 
             links[i].classList.remove('current-nav');

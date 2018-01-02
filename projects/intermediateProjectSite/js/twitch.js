@@ -29,7 +29,7 @@ document.getElementById('twitch_tv').addEventListener( 'click', () => {
 function twitchInitalize () {
     // indicate js is working
     let nameSection = document.getElementsByClassName('name-section');
-    for (let i = 0; i < nameSection.length; i++) {
+    for (let i = 0, x = nameSection.length; i < x; i++) {
         nameSection[i].textContent = 'initalizing...'
     }
 
@@ -90,7 +90,7 @@ function twitchUserAppend(data) {
         screenSection = document.getElementsByClassName('screen-section');
 
     // iterate through user data and append to proper elements
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0, x = data.length; i < x; i++) {
         nameSection[i].textContent = data[i].name;
         infoSection[i].textContent = data[i].bio;
         externalLinks[i].href = `https://twitch.tv/${data[i].name}`;
@@ -118,7 +118,7 @@ function twitchStatusAppend(data) {
         screenSection = document.getElementsByClassName('screen-section');
 
     // iterate through user status data
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0, x = data.length; i < x; i++) {
     
         // if users are offline set element value
         if (data[i].stream === null) {

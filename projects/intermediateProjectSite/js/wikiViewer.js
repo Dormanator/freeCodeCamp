@@ -134,7 +134,7 @@ function appendResults ( input ) {
     container.innerHTML = '';
     
     // iterate through each result
-    for (let i = 0, n = input[1].length; i < n; i++) {
+    for (let i = 0, x = input[1].length; i < x; i++) {
 
         // create object to store title, content, and link for each result on each iteration - mostly for clarity when inserting into html
         let result = {
