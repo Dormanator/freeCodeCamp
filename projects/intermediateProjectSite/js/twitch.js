@@ -84,10 +84,10 @@ async function getTwitchAPI (type, names) {
  ****************************************************/
 function twitchUserAppend(data) {
     // get elements associated with proper classes
-    let nameSection = document.getElementsByClassName('name-section');
-    let infoSection = document.getElementsByClassName('bottom-screen-info');
-    let externalLinks = document.querySelectorAll('.bottom-screen-btn a');
-    let screenSection = document.getElementsByClassName('screen-section');
+    let nameSection = document.getElementsByClassName('name-section'),
+        infoSection = document.getElementsByClassName('bottom-screen-info'),
+        externalLinks = document.querySelectorAll('.bottom-screen-btn a'),
+        screenSection = document.getElementsByClassName('screen-section');
 
     // iterate through user data and append to proper elements
     for (let i = 0; i < data.length; i++) {
@@ -111,12 +111,11 @@ function twitchUserAppend(data) {
  ****************************************************/
 function twitchStatusAppend(data) {
     // get elements associated with proper classes
-    let statusSection = document.getElementsByClassName('status-section');
-    let gameSection = document.getElementsByClassName('game-section');
-    let linkIcon = document.getElementsByClassName('twitch-link-icon');
-
-    // getscreen section to calc H x W and set bg image
-    let screenSection = document.getElementsByClassName('screen-section');
+    let statusSection = document.getElementsByClassName('status-section'),
+        gameSection = document.getElementsByClassName('game-section'),
+        linkIcon = document.getElementsByClassName('twitch-link-icon'),
+        // getscreen section to calc H x W and set bg image
+        screenSection = document.getElementsByClassName('screen-section');
 
     // iterate through user status data
     for (let i = 0; i < data.length; i++) {
@@ -130,8 +129,8 @@ function twitchStatusAppend(data) {
         // else set proper element online values
         } else {
             // calculate H x W for screen bg images
-            let height = screenSection[i].clientHeight;
-            let width = screenSection[i].clientWidth;
+            let height = screenSection[i].clientHeight,
+                width = screenSection[i].clientWidth;
 
             statusSection[i].innerHTML = `<div class="twitch-live"></div>${data[i].stream.stream_type}`;
             // get status-section child and add twitch-live style

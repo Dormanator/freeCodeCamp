@@ -138,9 +138,9 @@ function api(randNum){
  * 
  ****************************************************/
 function tweetPrepare(input){
-    let quote = quoteClean(input);
-    let author = authorCheck(input);
-    let tweet = '';
+    let quote = quoteClean(input),
+        author = authorCheck(input),
+        tweet = '';
     // if > 140 char trim to 135 - author and add '..."-'
     if ((quote.length + author.length + 1) > 139) {
         tweet = quote.slice(0,(135 - author.length)) + '..."-' + author; 

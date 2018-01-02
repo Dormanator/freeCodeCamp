@@ -12,11 +12,11 @@ function pageLoadWiki () {
     rotateRandom();
     
     // store container and default warning prompt in variable
-    let container = document.getElementById('search_form');
-    let warning = document.getElementById('warning');
-    
-    // create input field
-    let input = document.createElement('INPUT');
+    let container = document.getElementById('search_form'),
+        warning = document.getElementById('warning'),
+        // create input field
+        input = document.createElement('INPUT');
+
     input.id = 'search_field';
     input.className = 'search-input';
     input.setAttribute('type', 'search');
@@ -97,10 +97,10 @@ document.getElementById('search_form').addEventListener( 'submit', input => {
  ****************************************************/
 function fetchAPI ( search = '' ) {
     // store necessary data for API call
-    const API = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' + search;
-    const HEADER = new Headers({
-        'Api-User-Agent' : 'Example/1.0'
-    });
+    const API = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' + search,
+          HEADER = new Headers({
+          'Api-User-Agent' : 'Example/1.0'
+          });
 
     // call fetch on API and display loading indicator
     fetch( API, {

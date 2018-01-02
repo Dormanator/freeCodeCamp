@@ -34,9 +34,9 @@ document.getElementById('nav').addEventListener('click', x => {
     // make sure we don't react to click that are not nav children with proper ids
     if (x.target !== x.currentTarget && x.target.id !== '') {
         // save the target element's id
-        let commonClass = x.target.id;
+        let commonClass = x.target.id,
         // use that id to locate all the elements that should be toggled on click
-        let quoteGen = document.getElementsByClassName(commonClass);
+            quoteGen = document.getElementsByClassName(commonClass);
         
         // use teh array values obtained to access the proper elements based on their location in the HTML
         // order is [ nav-items, nav-info, content ]

@@ -24,8 +24,8 @@ function geoLocation () {
 // function the succesful geolocation query calls
 function geoSuccess (response) {
     // isolcate the lat and long w/o decimals to conform to the API requirements
-    let lat = Math.round(response.coords.latitude);
-    let long = Math.round(response.coords.longitude);
+    let lat = Math.round(response.coords.latitude),
+        long = Math.round(response.coords.longitude);
 
     // print let user know js is working
     $("#text").html(`Loading...`);
@@ -95,10 +95,9 @@ function noWeather () {
     function weatherIcon (rise, set, id) {
 
         // finding current time to compare against sun rise and sun set
-        let currentTime = Math.round(Date.now()/1000);
-
+        let currentTime = Math.round(Date.now()/1000),
         // checking to see if its day or night based on sunrise and set, determine whether to show sun or moon when clear skies
-        let day = currentTime >= rise && currentTime < set;
+        day = currentTime >= rise && currentTime < set;
 
         // if else handling the icons based on type of weather https://openweathermap.org/weather-conditions
 
@@ -147,8 +146,8 @@ $("#convert").click(convert);
 function convert () {
 
     // grab the format of teh temperature (C or F) and its value
-    let format = $("#temp").html().replace(/[^CF]/g,'');
-    let value = $("#temp").html();
+    let format = $("#temp").html().replace(/[^CF]/g,''),
+        value = $("#temp").html();
 
     // if celcius convert to farenheit, else vice versa
     if (format === 'C') {
