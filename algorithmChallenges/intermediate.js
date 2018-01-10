@@ -254,8 +254,22 @@ function uniteUnique(arr) {
  //           CONVERTED HTML           \\
 //                                      \\
 function convertHTML(str) {
-  // &colon;&rpar;
+  // create parellel arrays for symbols and corresopnding html to replace with
+let symbol = ['&', '<', '>', '"', "'"],
+    html = ['&amp;', '&lt;', '&gt;', '&quot;','&apos;'];
+
+    // iterate through each symbol
+    for (let i = 0, x = symbol.length; i < x; i++) {
+        
+        // don't do if we don't have to
+        if (str.includes(symbol[i])) {
+        // create pattern to find all symbols in word and replace with corresponding html array value
+        const pattern = new RegExp(symbol[i], 'g');
+        str = str.replace(pattern, html[i]);
+        }
+    }
+
   return str;
 }
 
-convertHTML("Dolce & Gabbana");
+console.log(convertHTML("Dolce & Gabbana"));
