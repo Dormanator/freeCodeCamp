@@ -271,5 +271,24 @@ let symbol = ['&', '<', '>', '"', "'"],
 
   return str;
 }
+// console.log(convertHTML("Dolce & Gabbana"));
 
-console.log(convertHTML("Dolce & Gabbana"));
+
+ //            SPINAL CASE             \\
+//                                      \\
+function spinalCase(str) {
+    // add spaces before capital letters in strings to seperate out the words
+    // change to lower cased string with spaces and underscores replaces with dashes
+    return str.replace(/(\B[A-Z])(?!\s)/g, ' $1').toLowerCase().replace(/[\s_]+/g, '-');
+}
+  
+  console.log(spinalCase('This IsSpinalTap'));
+
+
+
+ //        SUM ODD FIBONACCIS          \\
+//                                      \\
+function sumFibs(num) {
+    return num;
+}
+console.log(sumFibs(4));
