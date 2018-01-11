@@ -281,14 +281,36 @@ function spinalCase(str) {
     // change to lower cased string with spaces and underscores replaces with dashes
     return str.replace(/(\B[A-Z])(?!\s)/g, ' $1').toLowerCase().replace(/[\s_]+/g, '-');
 }
-  
-  console.log(spinalCase('This IsSpinalTap'));
+// console.log(spinalCase('This IsSpinalTap'));
 
 
 
  //        SUM ODD FIBONACCIS          \\
 //                                      \\
 function sumFibs(num) {
+    // create an array with the first fib number - 1
+    let fibs = [1];
+    // create a var to store teh next fib number - 1 comes next again
+    let currentFib = 1;
+
+    // begin to go through fib numbers up to or equal to the input number
+    for (let i = 0; currentFib <= num; i++) {
+        // push each current fib number into the fib array before we create the next
+        fibs.push(currentFib);
+        // the next fib number is created by adding the current fib number to the one the came before it
+        currentFib += fibs[i];
+    }
+    // filter out the fib numbers that are even and sum the odd numbers
+    return fibs.filter( x => x % 2 !== 0).reduce( (a,b) => a + b);
+}
+// console.log(sumFibs(10));
+
+
+
+ //           SUM ALL PRIMES           \\
+//                                      \\
+function sumPrimes(num) {
     return num;
 }
-console.log(sumFibs(4));
+  
+sumPrimes(10);
