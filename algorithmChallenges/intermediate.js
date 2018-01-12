@@ -320,7 +320,7 @@ function sumPrimes(num) {
         for (let j = 2; j <= num; j++) {
             
             if (i !== j && i % j === 0) {
-                // if a number is divisble by anything other than itself, increase the count
+                // if a number is divisble by anything other than itself, increase the count - it's not prime!
                 counter++;
             }
         }
