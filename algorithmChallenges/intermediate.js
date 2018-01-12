@@ -310,7 +310,26 @@ function sumFibs(num) {
  //           SUM ALL PRIMES           \\
 //                                      \\
 function sumPrimes(num) {
-    return num;
-}
-  
-sumPrimes(10);
+    
+    let prime = [];
+    // iterate through each value from 2 to input
+    for (let i = 2; i <= num; i++) {
+        let counter = 0;
+        // for each value we then want to check to ensure its only divisible by itself and 1
+        // but we need to test it against other possibilities 
+        for (let j = 2; j <= num; j++) {
+            
+            if (i !== j && i % j === 0) {
+                // if a number is divisble by anything other than itself, increase the count
+                counter++;
+            }
+        }
+        // if teh count is 0 the number is prime
+        if(counter === 0) {
+            prime.push(i);
+        }
+    }
+    // return teh array of prime numbers summed
+    return prime.reduce( (a,b) => a + b );
+} 
+// console.log(sumPrimes(977));
