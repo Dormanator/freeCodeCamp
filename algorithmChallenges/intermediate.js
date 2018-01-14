@@ -371,7 +371,27 @@ function smallestCommons(arr) {
         }
     }
 }
-// smallestCommons([1, 13]) should return 360360
-// smallestCommons([23, 18]) should return 6056820
-  
-console.log(smallestCommons([1,13]));
+// console.log(smallestCommons([1,13]));
+
+
+
+ //           FINDERS KEEPERS          \\
+//                                      \\
+function findElement(arr, func) {
+    // apply filter function provided
+    let num = arr.filter(func);
+    // return first value that passed the test
+    return num[0];
+}
+// console.log(findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; }));
+
+
+
+ //               DROP IT              \\
+//                                      \\
+function dropElements(arr, func) {
+    // Drop them elements.
+    return arr;
+}
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
