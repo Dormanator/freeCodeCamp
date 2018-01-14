@@ -333,3 +333,45 @@ function sumPrimes(num) {
     return prime.reduce( (a,b) => a + b );
 } 
 // console.log(sumPrimes(977));
+
+
+
+ //      Smallest Common Multiple      \\
+//                                      \\
+function smallestCommons(arr) {
+    // find our max and min values so we can explore this range of values
+    let min = arr[0] < arr[1] ? arr[0] : arr[1],
+        max = arr[0] > arr[1] ? arr[0] : arr[1],
+        lcm;
+
+    // iterate through range of values from loest to higest that must be multiples to find teh lcm
+    // using its relationship to teh gcd: lcm(a, b) = (a * b) / gcd(a, b)
+    for (let i = min; i < max; i++) {
+        // if this is the first iteration establish a baseline lcm 
+        //by finding the lcm of the first 2 numbers in teh range by diving their product by their gcd
+        if (i === min) {
+            lcm = (i * (i + 1)) / gcd(i, i + 1);
+        // else multiply the current val of lcm by the next number in the range and divide by their gcd
+        } else {
+            lcm = (lcm * (i + 1)) / gcd(lcm, i + 1);
+        }
+
+    }
+
+    return lcm;
+
+    // classic euclidan function gcd(a,b) a = b * q + r = (b, r) 
+    function gcd(x, y) {
+        // once we have a remainder of 0 we found our gcd
+        if (y === 0) {
+            return x;
+        // otherwise use the remainder as teh new divisor, and the old divisor as the numerator
+        } else {
+            return gcd(y, x % y);
+        }
+    }
+}
+// smallestCommons([1, 13]) should return 360360
+// smallestCommons([23, 18]) should return 6056820
+  
+console.log(smallestCommons([1,13]));
