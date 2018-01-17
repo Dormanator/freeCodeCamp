@@ -390,8 +390,55 @@ function findElement(arr, func) {
  //               DROP IT              \\
 //                                      \\
 function dropElements(arr, func) {
-    // Drop them elements.
-    return arr;
+    let dropCount = 0;
+    // iterate through array
+    for (let i = 0, x = arr.length; i < x; i++) {
+        // increase drop count to keep track of elements that return false
+        if (!func(arr[i])) {
+            dropCount++;
+        // when we encounter a true value we stop looking and slice off teh elements that return false
+        } else {
+            break;
+        }
+    }
+    
+    return arr.slice(dropCount);
 }
+// console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
 
-dropElements([1, 2, 3], function(n) {return n < 3; });
+
+
+ //             STEAMROLLER            \\
+//                                      \\
+function steamrollArray(arr) {
+    // reduce elements into single array while recusivley merging subarrays at teh current position, if they exist, before merging the current value
+    return arr.reduce( (accum, current) => accum.concat( Array.isArray(current) ? steamrollArray(current) : current ), [] );
+}
+// console.log(steamrollArray([1, [2], [3, [[4]]]]));
+
+
+
+ //             BINARY AGENTS          \\
+//                                      \\
+function binaryAgent(str) {
+    // convert string to array of binary values to convert
+    let arr = str.split(' ').map( x => {
+        // convert binary values to decimal and then to chars
+       return x = String.fromCharCode(parseInt(x, 2));
+    });
+    // return array joined array with no spaces in between values
+    return arr.join('');
+}  
+// console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
+
+
+
+ //        EVERYTHING BE TRUE          \\
+//                                      \\
+function truthCheck(collection, pre) {
+    // Is everyone being true?
+    return pre;
+}
+  
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+  
