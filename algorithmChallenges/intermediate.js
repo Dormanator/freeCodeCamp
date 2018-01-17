@@ -363,12 +363,8 @@ function smallestCommons(arr) {
     // classic euclidan function gcd(a,b) a = b * q + r = (b, r) 
     function gcd(x, y) {
         // once we have a remainder of 0 we found our gcd
-        if (y === 0) {
-            return x;
         // otherwise use the remainder as teh new divisor, and the old divisor as the numerator
-        } else {
-            return gcd(y, x % y);
-        }
+        return (y === 0) ? x : gcd(y, x % y);
     }
 }
 // console.log(smallestCommons([1,13]));
@@ -436,9 +432,21 @@ function binaryAgent(str) {
  //        EVERYTHING BE TRUE          \\
 //                                      \\
 function truthCheck(collection, pre) {
-    // Is everyone being true?
-    return pre;
+    // check every array value
+    return collection.every( obj => {
+        // to make sure they have the property && it has a non falsy value
+        return obj.hasOwnProperty(pre) && obj[pre]
+    });
 }
+// console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+
+
+
+ //         ARGUMENTS OPTIONAL         \\
+//                                      \\
+function addTogether() {
+    return false;
+  }
   
-truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+console.log(addTogether(2,3));
   
