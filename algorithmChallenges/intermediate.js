@@ -444,9 +444,22 @@ function truthCheck(collection, pre) {
 
  //         ARGUMENTS OPTIONAL         \\
 //                                      \\
-function addTogether() {
-    return false;
-  }
-  
-console.log(addTogether(2,3));
+function addTogether(a, b) {
+    // if only 1 arg is given and its a number, store it in a closure to be added on the stored function call
+    if (arguments.length === 1 && Number.isInteger(a)) {
+        return (b) => {
+            // if the arg passed into the stored function is a number add them, else undefined
+            return Number.isInteger(b) ?  a + b : undefined;
+        }
+    // if both args are given and are numbers add them
+    } else if (Number.isInteger(a) && Number.isInteger(b)) {
+        return a + b;
+    // else undefined
+    } else {
+        return undefined;
+    }
+
+}
+// let addTwo = addTogether(2);
+// console.log(addTogether('test'));
   
