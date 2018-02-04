@@ -64,9 +64,58 @@ function sym(args) {
  //              EXACT CHANGE          \\
 //                                      \\
 function checkCashRegister(price, cash, cid) {
-    let change;
-    // Here is your change, ma'am.
-    return change;
+
+    // create a var to keep track of teh change to return
+    let changeToReturn = (cash - price);
+        // create a cipher that corresponds to the format of cash in drawer input so we can see if the value fits in our change to give
+    const changeCipher = [.01, .05, .10, .25, 1, 5, 10, 20, 100];
+
+    // find amount in drawer that can be used as change (demoniations less than or equal to then what we need to return) and correct for float decimal fragments
+    let amount = cid.filter( (cidAmount , i) => {
+                        return changeCipher[i] <= changeToReturn;
+                    })
+                    .reduce( (accu, curr) => {
+                        return accu += curr[1];
+                    }, 0).toFixed(2);
+
+    // if we can end this quick we will...
+    // check teh amount if drawer can sustain the change to return
+    if (changeToReturn > amount) {
+        return 'Insufficient Funds';
+    // and check to see if we are closing out the register with this amount of change
+    } else if (amount - changeToReturn === 0) {
+        return 'Closed';
+    }
+
+    // otherwise, lets build our return amount
+    // create a var filled with change amounts we are giving back
+    let change = [];
+
+    // iterate through the money in the drawer backwards to find the largest values we can give them back first
+    for (let i = changeCipher.length - 1; i >= 0; i--) {
+
+        // create a temproary variable that will indicate if we are giving back any money from the drawer for this amount (.01,...,100)
+        let amount = 0;
+
+        // while the change in drawer is not empty for this amount AND the value can fit into the change we have left to return
+        while (cid[i][1] !== 0 && (changeToReturn - changeCipher[i]).toFixed(2) >= 0) {
+
+            // remove the current amount from the cash in drawer
+            cid[i][1] -= changeCipher[i];
+            // remove the curret amount from the change we have left to return
+            changeToReturn -= changeCipher[i];
+            // increment the amount of cash to give back at this value
+            amount += changeCipher[i];
+        
+        }
+
+        // if we are giving back change in this amount add it to the array of change we are returning
+        if (amount > 0) {
+            change.push([cid[i][0], amount]);
+        } 
+    }
+
+        return change;
 }
   
   // Example cash-in-drawer array:
@@ -80,4 +129,4 @@ function checkCashRegister(price, cash, cid) {
   // ["TWENTY", 60.00],
   // ["ONE HUNDRED", 100.00]]
   
-  checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+  console.log( checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]) );
