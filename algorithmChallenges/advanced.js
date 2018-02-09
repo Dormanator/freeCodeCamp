@@ -117,16 +117,72 @@ function checkCashRegister(price, cash, cid) {
 
         return change;
 }
-  
-  // Example cash-in-drawer array:
-  // [["PENNY", 1.01],
-  // ["NICKEL", 2.05],
-  // ["DIME", 3.10],
-  // ["QUARTER", 4.25],
-  // ["ONE", 90.00],
-  // ["FIVE", 55.00],
-  // ["TEN", 20.00],
-  // ["TWENTY", 60.00],
-  // ["ONE HUNDRED", 100.00]]
-  
-  console.log( checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]) );
+// console.log( checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]) );
+
+
+
+ //          INVENTORY UPDATE          \\
+//                                      \\
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+    // function to updated existing items and merge on new items
+    const updatedInv = updateProducts(arr1, arr2);
+    // function to alphabetize inventory by product name -- BROKENNNN!
+    const sortedInv = sortProducts(updatedInv);
+
+    return sortedInv;
+}
+
+function updateProducts (arr1, arr2) {
+    // let's iterate through one array so we can compare it to the other inventory array
+    for (let i = 0, x = arr1.length; i < x; i++) {
+        // and for each product name in arr1 we look at, we will look for its existence in arr2, so we iterate through arr2
+        for (let j = 0; j < arr2.length; j++) {
+            // if we encounter a product from the current inventory array in the new inventory array
+            if (arr1[i][1] === arr2[j][1]) {
+                // then we will add the number of new inventory into teh current inventory
+                arr1[i][0] += arr2[j][0];
+                // and delete the product entry from the new inventory since its been acounted for
+                // plus, this will give us less items to check for as we continue to check the new inventory
+                // for the products in the current inventory, thus shortening our runtime
+                arr2.splice(j, 1);
+            }
+        }
+    }
+    // push our arr1 and arr2 outputs into our temp array to return both
+    arr1 = arr1.concat(arr2);
+    return arr1;
+}
+
+function sortProducts (arr) {
+    // since we are sorting alphabetically we want to compare each item in teh array and the value that follows it
+    return arr.sort( (a, b) => {
+        // when the first value is already smaller than the next return -1 to indicate it preceeds teh value
+        if (a[1] < b[1]) {
+            return -1;
+        // when the first value is larger than the next return 1 to indicate it follow the value
+        } else if (a[1] > b[1]) {
+            return 1;
+        // otherwise the values must be equal so no need to rearrange them, return 0
+        } else {
+            return 0;
+        }
+    });
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+console.log(updateInventory(curInv, newInv));
