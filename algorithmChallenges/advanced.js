@@ -184,5 +184,54 @@ var newInv = [
     [67, "Bowling Ball"],
     [7, "Toothpaste"]
 ];
+// console.log(updateInventory(curInv, newInv));
 
-console.log(updateInventory(curInv, newInv));
+
+
+ //          NO REPEATS PLEASE         \\
+//                                      \\
+function permAlone(str) {
+    //, create and array of letters, and store the number of elements in teh array
+    let letters = [...str],
+    n = letters.length,
+    // and a var to increment when strings without repeat letters are found
+    count = 0;
+
+    permutate(n, letters);
+
+    return count;
+
+    function permutate (n, array) {
+        // if we've swapped the appropriate number of letters then we take teh permutation created
+        if (n === 0) {
+            console.log(array);
+            // and if we can confirm the current permutation doesnt have and letters reapted in sequence
+            if (! /(.)\1/g.test(array.join('')) ) {
+                // increase teh count of appropriate permutations
+                count++;
+            }
+
+            return;
+        }
+    
+        // 
+        for (let i = 0; i < n; i++) {
+            // call permutate with n-1 so we can generate permutations of permutations
+            permutate(n-1, array);
+            // if n is odd we swap the first and last element && if n is even we swap the ith element
+            n % 2 === 0 ? swap(i, n-1) : swap(0, n-1);
+        }
+
+        // simple swap function w/o using temp var
+        function swap (a, b) {
+            [array[a], array[b]] = [array[b], array[a]];
+        }
+    }
+
+}
+//console.log(permAlone('aab'));
+
+
+
+ //             MAKE A PERSON          \\
+//                                      \\
