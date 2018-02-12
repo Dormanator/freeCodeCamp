@@ -235,3 +235,47 @@ function permAlone(str) {
 
  //             MAKE A PERSON          \\
 //                                      \\
+var Person = function(firstAndLast) {
+    // first extract teh current first and last name from the input string
+    // and store them in vars assecible to constructor function methods
+    let firstName = firstAndLast.split(' ')[0],
+    lastName = firstAndLast.split(' ')[1];
+
+    // setFullName resets the function scope vars
+    // if no arg/ new full name is given, a new full name will be derived from the first and last vars
+    // this simplifies input required when calling method after new first/last names are set
+    this.setFullName = function(name = `${firstName} ${lastName}`) {
+        firstAndLast = name;
+        firstName = name.split(' ')[0];
+        lastName = name.split(' ')[1];
+    };
+    
+    // when set first or last are called they update parent scope var
+    // and call setFullName to ensure a new full name is created
+    this.setFirstName = function(first) {
+        firstName = first;
+        this.setFullName();
+    };
+
+    this.setLastName = function(last) {
+        lastName = last;
+        this.setFullName();
+    };
+
+    // get methods simply return the parent scope vars
+    this.getFirstName = function() {
+        return firstName;
+    };
+
+    this.getLastName = function() {
+        return lastName;
+    };
+    
+    this.getFullName = function() {
+        return firstAndLast;
+    };
+    
+};
+
+// var bob = new Person('Bob Ross');
+// console.log(bob.getFirstName());
