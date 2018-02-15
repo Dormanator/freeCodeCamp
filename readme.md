@@ -1,10 +1,10 @@
 # freeCodeCamp Curriculum Work
 
-##Algorithm Challenges
+## Algorithm Challenges
 Check out the solutions I developed for the basic, intermediate, and advanced algorithm challenges I completed while working towards freeCodeCamps Front-End Development certificate.
 
-##Intermediate Projects
-###Front-End API Intergration
+## Intermediate Projects
+### Front-End API Intergration
 * Random Quote Generator
 * Local Weather
 * Wikipedia Viewer
@@ -16,6 +16,6 @@ I still enjoy the design of the intermediate projects, and their functionality s
 
 However, these projects are from an era before I understood how to use OOP design to organize and modularize my code, and before I knew how to use webpack to harness ES6 import features across browsers. As a result, the code organization of the intermediate projects leaves much to be desired, but also helps show the improvements I made in these areas as I moved into the advanced projects.
 
-##Advanced Projects
-###Front-End JavaScript Challenges
+## Advanced Projects
+### Front-End JavaScript Challenges
 * Calculator - coming soon
