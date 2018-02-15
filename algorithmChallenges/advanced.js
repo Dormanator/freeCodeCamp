@@ -279,3 +279,84 @@ var Person = function(firstAndLast) {
 
 // var bob = new Person('Bob Ross');
 // console.log(bob.getFirstName());
+
+
+
+ //            MAP THE DEBRIS          \\
+//                                      \\
+function orbitalPeriod(arr) {
+    const GM = 398600.4418,
+    earthRadius = 6367.4447;
+
+    const newArr = arr.map( (x) => {
+
+        const axisCubed = Math.pow(x.avgAlt + earthRadius, 3);
+        x.orbitalPeriod = Math.round(2 * Math.PI * Math.sqrt(axisCubed / GM));
+
+        delete x.avgAlt;
+
+        return x;
+    });
+
+    return newArr;
+}
+// console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
+
+
+
+ //                PAIRWISE            \\
+//                                      \\
+// function pairwise(arr, arg) {
+//     let used = [];
+//     // iterate through numbers keeping track of a summed value with reduce
+//     return arr.reduce( (accum, curr, i, arr) => {
+//         // if the given argument value minus the current value is in the array
+//         // that means the current value can be summed with another in the array (its valid pair) to make the given arg
+//         // as long as we haven't added these index before (tested by checking used)
+//         if (arr.includes(arg - curr, i + 1) && !used.includes(i)) {
+//             // find the index of the matching pair value
+//             const j = arr.indexOf(arg - curr);
+//             // if we have used the index of the current pair do not use it again
+//             // keep track of the fact that we have looked at the current value and its pair by adding their indexs to the used array
+//             if (used.includes(j)) {
+//                 used.push(i);
+//                 // and add the curent index value and its pair's index to our accumulating value
+//                 return accum + i;
+//             } else {
+//                 used.push(i, j);
+//                 // and add the curent index value and its pair's index to our accumulating value
+//                 return accum + i + j;
+//             }
+//         } else {
+//             // otherwise the current value can't be summed with another value in the array to get the arg
+//             // so don't add the current index to the accumulator
+//             return accum;
+//         }
+//     }, 0);
+// }
+
+
+function pairwise(arr, arg) {
+    // iterate through numbers keeping track of a summed value with reduce
+    return arr.reduce( (accum, curr, i, arr) => {
+        // if the given argument value minus the current value is in the array
+        // that means the current value can be summed with another in the array (its valid pair) to make the given arg
+        if ( arr.includes(arg - curr, i + 1) ) {
+            // find the index of the matching pair value
+            const j = arr.indexOf(arg - curr, i + 1);
+            // keep track of the fact that we have looked at the current value and its pair 
+            // by setting their values to undefined so they wont be considered valid values to be flagged again
+            arr[i] = undefined;
+            arr[j] = undefined;
+            // and add the curent index value and its pair's index to our accumulating value
+            return accum + i + j;
+        } else {
+            // otherwise the current value can't be summed with another value in the array to get the arg
+            // so don't add the current index to the accumulator
+            return accum;
+        }
+    }, 0);
+}
+//console.log(pairwise([1,4,2,3,0,5], 7)); // 11
+//console.log(pairwise([1, 3, 2, 4], 4)); // 1
+//console.log(pairwise([0, 0, 0, 0, 1, 1], 1)); // 1
