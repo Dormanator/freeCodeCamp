@@ -1,7 +1,7 @@
 # freeCodeCamp Curriculum Work
 
 ## Algorithm Challenges
-Check out the solutions I developed for the basic, intermediate, and advanced algorithm challenges I completed while working towards freeCodeCamps Front-End Development certificate.
+Check out the solutions I developed for the basic, intermediate, and advanced algorithm challenges I completed while working towards freeCodeCamp's Front-End Development certificate.
 
 ## Intermediate Projects
 ### Front-End API Integration
