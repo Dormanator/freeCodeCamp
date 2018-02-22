@@ -18,4 +18,4 @@ However, these projects are from an era before I understood how to use OOP desig
 
 ## Advanced Projects
 ### Front-End JavaScript Challenges
-* [Colorful Calculator] (https://dormanator.github.io/colorful-calculator/) 
+* [Colorful Calculator](https://dormanator.github.io/colorful-calculator/) 
