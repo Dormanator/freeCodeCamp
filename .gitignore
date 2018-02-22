@@ -10,7 +10,7 @@
 *~
 *.sass-cache
 node_modules/
-projects/calculator
+projects/calculator/
 .tmp/
 
 # OS or Editor folders
