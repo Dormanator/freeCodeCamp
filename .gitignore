@@ -11,6 +11,7 @@
 *.sass-cache
 node_modules/
 projects/calculator/
+projects/pomodoro/
 .tmp/
 
 # OS or Editor folders
